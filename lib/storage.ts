@@ -1,5 +1,6 @@
 import type { PlannerState, CheckIn, CheckInHistory } from './types'
 import { SEED_DATA } from './seedData'
+import { todayStr } from './utils'
 
 const SK = 'melis_planner_2026_v5'
 const CI_SK = 'melis_ci_v1'
@@ -12,6 +13,7 @@ const EMPTY_STATE: PlannerState = {
   reminders: [],
   completed: [],
   clients: [],
+  customCats: [],
 }
 
 // ── PLANNER STATE ────────────────────────────────────────
@@ -40,6 +42,7 @@ export function loadState(): PlannerState {
       reminders:  parsed.reminders  ?? [],
       completed:  parsed.completed  ?? [],
       clients:    parsed.clients    ?? SEED_DATA.clients ?? [],
+      customCats: (parsed as any).customCats ?? [],
     }
   } catch {
     return SEED_DATA
@@ -70,7 +73,7 @@ export function loadCheckIn(): CheckIn | null {
     const raw = localStorage.getItem(CI_SK)
     if (!raw) return null
     const ci = JSON.parse(raw) as CheckIn
-    const today = new Date().toISOString().split('T')[0]
+    const today = todayStr()
     return ci.date === today ? ci : null
   } catch {
     return null

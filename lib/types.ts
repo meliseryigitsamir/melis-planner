@@ -68,6 +68,12 @@ export interface ClientEntry {
   createdAt: string
 }
 
+export interface CustomCat {
+  n: string
+  c: string
+  pool: Pool
+}
+
 export interface PlannerState {
   tasks: Task[]
   notes: { aile: Note[]; is: Note[] }
@@ -75,6 +81,7 @@ export interface PlannerState {
   reminders: Reminder[]
   completed: { title: string; doneAt: string; role?: Role }[]
   clients: ClientEntry[]
+  customCats: CustomCat[]
 }
 
 export interface Nudge {

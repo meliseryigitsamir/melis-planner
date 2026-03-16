@@ -460,4 +460,5 @@ export const SEED_DATA: PlannerState = {
   reminders: [],
   completed: SEED_COMPLETED,
   clients: SEED_CLIENTS,
+  customCats: [],
 }

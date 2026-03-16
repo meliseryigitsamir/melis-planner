@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { Role, Energy, CheckIn } from '@/lib/types'
 import { ROLES, ENERGIES, MONTHS, DAYS_TR } from '@/lib/constants'
+import { todayStr } from '@/lib/utils'
 
 interface Props {
   onComplete: (ci: CheckIn) => void
@@ -20,7 +21,7 @@ export default function CheckInScreen({ onComplete }: Props) {
   const handleStart = () => {
     if (!role || !energy) return
     onComplete({
-      date: new Date().toISOString().split('T')[0],
+      date: todayStr(),
       role,
       energy,
     })

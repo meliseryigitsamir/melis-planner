@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { Task } from '@/lib/types'
+import type { Task, CustomCat } from '@/lib/types'
 import { todayStr, addDays, isPast } from '@/lib/utils'
 import { CATS_W, CATS_P } from '@/lib/constants'
 
@@ -10,11 +10,14 @@ interface Props {
   onSave: (id: number, updates: Partial<Task>) => void
   onDelete: (id: number) => void
   onClose: () => void
+  customCats?: CustomCat[]
 }
 
-export default function TaskModal({ task, onSave, onDelete, onClose }: Props) {
+export default function TaskModal({ task, onSave, onDelete, onClose, customCats = [] }: Props) {
   const [title, setTitle] = useState(task.title)
   const [date, setDate] = useState(task.date ?? '')
+  const [cat, setCat] = useState(task.cat)
+  const [pool, setPool] = useState(task.pool)
   const [priority, setPriority] = useState(task.priority)
   const [visible, setVisible] = useState(false)
 
@@ -28,11 +31,12 @@ export default function TaskModal({ task, onSave, onDelete, onClose }: Props) {
   }
 
   const save = () => {
-    onSave(task.id, { title, date: date || null, priority })
+    onSave(task.id, { title, date: date || null, priority, cat, pool })
     close()
   }
 
-  const cats = task.pool === 'is' ? CATS_W : CATS_P
+  const cats = pool === 'is' ? CATS_W : CATS_P
+  const poolCustomCats = customCats.filter(c => c.pool === pool)
   const today = todayStr()
 
   return (
@@ -57,9 +61,23 @@ export default function TaskModal({ task, onSave, onDelete, onClose }: Props) {
           rows={2}
         />
 
-        {/* Date + Priority */}
+        {/* Pool toggle */}
         <div className="flex gap-2 mb-3">
-          <div className="flex-1">
+          {(['aile', 'is'] as const).map(p => (
+            <button key={p} onClick={() => setPool(p)}
+              className={`flex-1 text-xs py-2 rounded-xl border font-bold transition-all ${
+                pool === p
+                  ? p === 'aile' ? 'border-pink-400 bg-pink-50 text-pink-600' : 'border-blue-400 bg-blue-50 text-blue-600'
+                  : 'border-stone-200 text-stone-400'
+              }`}>
+              {p === 'aile' ? '👩‍👧 Kişisel' : '💼 İş'}
+            </button>
+          ))}
+        </div>
+
+        {/* Date + Priority + Category */}
+        <div className="grid grid-cols-3 gap-2 mb-3">
+          <div>
             <label className="text-[9px] font-medium text-stone-400 uppercase tracking-wider block mb-1">Tarih</label>
             <input
               type="date"
@@ -68,16 +86,27 @@ export default function TaskModal({ task, onSave, onDelete, onClose }: Props) {
               className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2.5 py-2 text-xs text-stone-700 outline-none focus:border-blue-400"
             />
           </div>
-          <div className="flex-1">
+          <div>
             <label className="text-[9px] font-medium text-stone-400 uppercase tracking-wider block mb-1">Öncelik</label>
             <select
               value={priority}
               onChange={e => setPriority(e.target.value as Task['priority'])}
-              className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2.5 py-2 text-xs text-stone-700 outline-none appearance-none"
+              className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2.5 py-2 text-xs text-stone-700 outline-none"
             >
               <option value="">Normal</option>
               <option value="med">🟡 Orta</option>
               <option value="high">🔴 Yüksek</option>
+            </select>
+          </div>
+          <div>
+            <label className="text-[9px] font-medium text-stone-400 uppercase tracking-wider block mb-1">Kategori</label>
+            <select
+              value={cat}
+              onChange={e => setCat(e.target.value)}
+              className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2.5 py-2 text-xs text-stone-700 outline-none"
+            >
+              {cats.map(c => <option key={c.n} value={c.n}>{c.n}</option>)}
+              {poolCustomCats.length > 0 && poolCustomCats.map(c => <option key={c.n} value={c.n}>✨ {c.n}</option>)}
             </select>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import type { Task } from '@/lib/types'
 import { ROLE_CATS } from '@/lib/constants'
 import { MONTHS, DAYS_S } from '@/lib/constants'
-import { todayStr } from '@/lib/utils'
+import { todayStr, dateToLocalStr } from '@/lib/utils'
 
 interface Props {
   tasks: Task[]
@@ -20,7 +20,7 @@ export default function DistChart({ tasks }: Props) {
     return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(d0)
       d.setDate(d.getDate() + mo + i)
-      const ds = d.toISOString().split('T')[0]
+      const ds = dateToLocalStr(d)
       const dayTasks = tasks.filter(t => t.date === ds)
       const anne = dayTasks.filter(t =>
         ROLE_CATS.anne?.some(c => t.cat?.includes(c.split(' ')[0]))

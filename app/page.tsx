@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { usePlanner } from '@/hooks/usePlanner'
 import CheckInScreen from '@/components/CheckIn'
 import TaskCard from '@/components/TaskCard'
@@ -8,18 +8,19 @@ import TaskModal from '@/components/TaskModal'
 import NudgeCard from '@/components/NudgeCard'
 import DistChart from '@/components/DistChart'
 import SmartNotes from '@/components/SmartNotes'
-import { filterByRoleEnergy } from '@/lib/filter'
+import { filterByRoleEnergy, contextFilter, filterClientsByRole } from '@/lib/filter'
 import { getNudges } from '@/lib/nudges'
-import { urgencyScore, todayStr, addDays, isPast, detectPool, detectCat } from '@/lib/utils'
+import { urgencyScore, todayStr, addDays, isPast, detectPool, detectCat, dateToLocalStr } from '@/lib/utils'
 import { ROLES, ENERGIES, MONTHS, DAYS_TR, DAYS_S, ALL_CATS, CATS_W, CATS_P, PIPELINE_STAGES } from '@/lib/constants'
 import { exportJSON } from '@/lib/storage'
-import type { Task, View, PipelineStage, ClientEntry } from '@/lib/types'
+import type { Task, View, PipelineStage, ClientEntry, CustomCat } from '@/lib/types'
 
 export default function PlannerPage() {
   const {
     state, checkin, hydrated, hat, setHat,
     addTask, toggleTask, updateTask, deleteTask,
     addClient, updateClient, deleteClient,
+    addCustomCat, deleteCustomCat,
     addSmartNote, ideaToTask, deleteIdea, deleteReminder,
     doCheckIn, resetCheckIn,
   } = usePlanner()
@@ -38,20 +39,106 @@ export default function PlannerPage() {
   const [newClientStage, setNewClientStage] = useState<PipelineStage>('lead')
   const [newClientNotes, setNewClientNotes] = useState('')
   const [editingClient, setEditingClient] = useState<ClientEntry | null>(null)
-  const [pipelineFilter, setPipelineFilter] = useState<string | null>(null) // filter by category
+  const [pipelineFilter, setPipelineFilter] = useState<string | null>(null)
+  const tasksRef = useRef<HTMLDivElement>(null)
+  const [showShareMenu, setShowShareMenu] = useState(false)
+  const [shareMsg, setShareMsg] = useState('')
+  const [showAddCat, setShowAddCat] = useState(false)
+  const [newCatName, setNewCatName] = useState('')
+  const [newCatColor, setNewCatColor] = useState('#3b82f6')
+  const [newCatPool, setNewCatPool] = useState<'aile' | 'is'>('is')
 
+  const [toast, setToast] = useState<string | null>(null)
+
+  // ── CHECK-IN CASCADING DEFAULTS ──────────────────────
+  useEffect(() => {
+    if (!checkin) return
+    if (checkin.role === 'anne') { setHat('aile'); setQaPool('aile') }
+    else if (checkin.role === 'akademi' || checkin.role === 'girisim') { setHat('is'); setQaPool('is') }
+    else { setHat('all') }
+  }, [checkin?.role, checkin?.date])
+
+  // ── LIVE CLOCK (updates every 30s) ──────────────────
+  const [now, setNow] = useState<Date | null>(null)
+  useEffect(() => {
+    setNow(new Date())
+    const interval = setInterval(() => setNow(new Date()), 30000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const d = now ?? new Date()
   const today = todayStr()
-  const d = new Date()
   const clients = state.clients ?? []
+  const timeStr = d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' })
 
-  // ── DERIVED DATA ──────────────────────────────────────
-  const filtered = useMemo(
-    () => filterByRoleEnergy(state.tasks.filter(t => t.type !== 'backlog'), checkin),
-    [state.tasks, checkin]
+  // ── SHARE ALL TODAY'S TASKS ─────────────────────────
+  const buildDaySummary = (targetDate?: string) => {
+    const dt = targetDate ?? today
+    const dd = new Date(dt + 'T00:00:00')
+    const dayLabel = `${DAYS_TR[dd.getDay()]}, ${dd.getDate()} ${MONTHS[dd.getMonth()]} ${dd.getFullYear()}`
+    const dayTasks = state.tasks.filter(t => t.date === dt)
+    const undone = dayTasks.filter(t => !t.done)
+    const done = dayTasks.filter(t => t.done)
+    const hr = d.getHours()
+    const greet = hr < 12 ? '☀️' : hr < 18 ? '🌤️' : '🌙'
+
+    let text = `${greet} Melis Planner — ${dayLabel}\n⏰ ${timeStr}\n\n`
+
+    if (undone.length > 0) {
+      text += `📋 Yapılacaklar (${undone.length}):\n`
+      undone.forEach((t, i) => {
+        const pool = t.pool === 'aile' ? '👩‍👧' : '💼'
+        const priority = t.priority === 'high' ? ' 🔴' : ''
+        text += `${i + 1}. ${pool} ${t.title}${priority}${t.cat ? ` [${t.cat}]` : ''}\n`
+      })
+    }
+
+    if (done.length > 0) {
+      text += `\n✅ Tamamlanan (${done.length}):\n`
+      done.forEach((t, i) => {
+        text += `${i + 1}. ✓ ${t.title}\n`
+      })
+    }
+
+    const pct = dayTasks.length > 0 ? Math.round(done.length / dayTasks.length * 100) : 0
+    text += `\n📊 İlerleme: %${pct} (${done.length}/${dayTasks.length})`
+
+    return text
+  }
+
+  const shareDayWhatsApp = () => {
+    const text = buildDaySummary()
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
+    setShowShareMenu(false)
+  }
+
+  const shareDayCopy = () => {
+    const text = buildDaySummary()
+    navigator.clipboard.writeText(text)
+    setShareMsg('✅ Kopyalandı!')
+    setTimeout(() => setShareMsg(''), 2000)
+    setShowShareMenu(false)
+  }
+
+  const shareDaySMS = () => {
+    const text = buildDaySummary()
+    window.open(`sms:?body=${encodeURIComponent(text)}`, '_blank')
+    setShowShareMenu(false)
+  }
+
+  // ── DERIVED DATA (Unified Context Filter) ─────────────
+  const contextTasks = useMemo(
+    () => contextFilter(state.tasks, checkin, hat),
+    [state.tasks, checkin, hat]
   )
-  const hatFiltered = useMemo(
-    () => hat === 'all' ? filtered : filtered.filter(t => t.pool === hat),
-    [filtered, hat]
+  const filtered = useMemo(
+    () => contextTasks.filter(t => t.type !== 'backlog'),
+    [contextTasks]
+  )
+  const hatFiltered = filtered
+  const roleClients = useMemo(
+    () => filterClientsByRole(clients, checkin),
+    [clients, checkin]
   )
 
   const overdue     = hatFiltered.filter(t => !t.done && t.date && isPast(t.date))
@@ -74,16 +161,14 @@ export default function PlannerPage() {
   const donePct  = allToday.length > 0 ? Math.round(allToday.filter(t => t.done).length / allToday.length * 100) : 0
 
   const poolTasks = useMemo(() => {
-    const all = state.tasks.filter(t => !t.done && t.type === 'backlog')
-    return hat === 'all' ? all : all.filter(t => t.pool === hat)
-  }, [state.tasks, hat])
+    return contextTasks.filter(t => !t.done && t.type === 'backlog')
+  }, [contextTasks])
 
   const nudges = useMemo(() => getNudges(state.tasks, checkin), [state.tasks, checkin])
 
   const active = useMemo(() => {
-    const all = state.tasks.filter(t => !t.done)
-    return hat === 'all' ? all : all.filter(t => t.pool === hat)
-  }, [state.tasks, hat])
+    return contextTasks.filter(t => !t.done)
+  }, [contextTasks])
 
   const pCnt = active.filter(t => t.pool === 'aile').length
   const wCnt = active.filter(t => t.pool === 'is').length
@@ -95,14 +180,14 @@ export default function PlannerPage() {
   const poolC = poolTasks.length
   const noteC = (state.ideas?.length ?? 0) + (state.reminders?.length ?? 0)
   const completedC = state.completed?.length ?? 0
-  const clientsC = clients.filter(c => c.stage !== 'tamamlandi').length
+  const clientsC = roleClients.filter(c => c.stage !== 'tamamlandi').length
 
   const role   = ROLES.find(r => r.id === checkin?.role) ?? ROLES[0]
   const energy = ENERGIES.find(e => e.id === checkin?.energy) ?? ENERGIES[0]
 
   // ── CATEGORIES ────────────────────────────────────────
   const catGroups = useMemo(() => {
-    const tasks = hat === 'all' ? state.tasks : state.tasks.filter(t => t.pool === hat)
+    const tasks = contextTasks
     const groups: Record<string, { total: number; done: number; undone: number; overdue: number; tasks: Task[]; clients: ClientEntry[] }> = {}
     tasks.forEach(t => {
       const c = t.cat || 'Diğer'
@@ -113,46 +198,70 @@ export default function PlannerPage() {
       groups[c].tasks.push(t)
     })
     // Attach clients to their categories
-    clients.forEach(cl => {
+    roleClients.forEach(cl => {
       if (!groups[cl.cat]) groups[cl.cat] = { total: 0, done: 0, undone: 0, overdue: 0, tasks: [], clients: [] }
       groups[cl.cat].clients.push(cl)
     })
     return Object.entries(groups)
       .map(([name, data]) => ({ name, ...data, pct: data.total > 0 ? Math.round(data.done / data.total * 100) : 0 }))
       .sort((a, b) => b.undone - a.undone || b.clients.length - a.clients.length)
-  }, [state.tasks, hat, clients])
+  }, [contextTasks, roleClients])
 
   // ── Pipeline categories (for filter) ──────────────────
   const pipelineCats = useMemo(() => {
-    const cats = new Set(clients.map(c => c.cat))
+    const cats = new Set(roleClients.map(c => c.cat))
     return Array.from(cats)
-  }, [clients])
+  }, [roleClients])
 
   const filteredClients = useMemo(() => {
-    return pipelineFilter ? clients.filter(c => c.cat === pipelineFilter) : clients
+    return pipelineFilter ? roleClients.filter(c => c.cat === pipelineFilter) : roleClients
   }, [clients, pipelineFilter])
 
+  // ── CUSTOM CATS MERGED ────────────────────────────────
+  const customCats = state.customCats ?? []
+  const allCatsMerged = useMemo(() => [
+    ...ALL_CATS,
+    ...customCats.map(c => ({ n: c.n, c: c.c })),
+  ], [customCats])
+
   // ── HELPERS ───────────────────────────────────────────
-  const getCatColor = (catName: string) => ALL_CATS.find(c => c.n === catName)?.c ?? '#94a3b8'
+  const getCatColor = (catName: string) => allCatsMerged.find(c => c.n === catName)?.c ?? '#94a3b8'
   const getCatPool = (catName: string) => {
     if (CATS_W.find(c => c.n === catName)) return 'is'
     if (CATS_P.find(c => c.n === catName)) return 'aile'
+    const custom = customCats.find(c => c.n === catName)
+    if (custom) return custom.pool
     return null
   }
 
-  // ── QUICK ADD ─────────────────────────────────────────
+  const submitNewCat = () => {
+    if (!newCatName.trim()) return
+    if (allCatsMerged.some(c => c.n === newCatName.trim())) return // duplicate check
+    addCustomCat({ n: newCatName.trim(), c: newCatColor, pool: newCatPool })
+    setNewCatName(''); setShowAddCat(false)
+  }
+
+  // ── QUICK ADD (Context-Aware) ────────────────────────
   const submitQA = () => {
     if (!qaVal.trim()) return
-    const pool = detectPool(qaVal) ?? qaPool
-    const cat  = detectCat(qaVal, pool)
+    const effectivePool = hat !== 'all' ? hat : (detectPool(qaVal) ?? qaPool)
+    const cat  = expandedCat ? { n: expandedCat } : detectCat(qaVal, effectivePool)
+    // If a strip day is selected, use that date; otherwise use qaMode
+    const date = stripSel
+      ? stripSel
+      : qaMode === 'pool' ? null : qaMode === 'tomorrow' ? addDays(1) : today
+    const type = (qaMode === 'pool' && !stripSel) ? 'backlog' : 'task'
     addTask({
       title: qaVal.trim(),
-      date:  qaMode === 'pool' ? null : qaMode === 'tomorrow' ? addDays(1) : today,
-      cat:   cat.n, pool,
-      type:  qaMode === 'pool' ? 'backlog' : 'task',
+      date, cat: cat.n, pool: effectivePool, type,
       priority: '',
     })
     setQaVal('')
+    // Toast feedback
+    const label = date === today ? 'Bugüne' : date ? `${new Date(date+'T00:00:00').getDate()} ${MONTHS[new Date(date+'T00:00:00').getMonth()]}` : 'Havuza'
+    setToast(`✅ "${qaVal.trim().substring(0, 25)}" → ${label} eklendi`)
+    setTimeout(() => setToast(null), 2500)
+    setTimeout(() => tasksRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
   }
 
   // ── ADD CLIENT ────────────────────────────────────────
@@ -173,13 +282,12 @@ export default function PlannerPage() {
     const dow = d.getDay()
     const mo  = dow === 0 ? -6 : 1 - dow
     return Array.from({ length: 7 }, (_, i) => {
-      const dd = new Date(d)
-      dd.setDate(dd.getDate() + mo + i + (weekOffset * 7))
-      const ds = dd.toISOString().split('T')[0]
+      const dd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + mo + i + (weekOffset * 7))
+      const ds = dateToLocalStr(dd)
       const cnt = hatFiltered.filter(t => t.date === ds && !t.done).length
       return { ds, date: dd.getDate(), lbl: DAYS_S[dd.getDay()], cnt, isToday: ds === today }
     })
-  }, [state.tasks, checkin, hat, weekOffset])
+  }, [state.tasks, checkin, hat, weekOffset, now])
 
   const weekLabel = useMemo(() => {
     if (weekOffset === 0) return 'Bu Hafta'
@@ -219,12 +327,38 @@ export default function PlannerPage() {
                 <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{role.icon} {role.name}</span>
                 <span className="text-xs text-stone-400 hidden sm:inline">{energy.icon} {energy.name}</span>
               </div>
-              <p className="text-xs text-stone-400">
-                {DAYS_TR[d.getDay()]}, {d.getDate()} {MONTHS[d.getMonth()]} {d.getFullYear()}
-                {donePct > 0 && <span className="ml-2 text-emerald-500 font-medium">· %{donePct}</span>}
+              <p className="text-xs text-stone-400 flex items-center gap-2">
+                <span>{DAYS_TR[d.getDay()]}, {d.getDate()} {MONTHS[d.getMonth()]} {d.getFullYear()}</span>
+                <span className="text-blue-500 font-bold bg-blue-50 px-2 py-0.5 rounded-full text-[11px]">🕐 {timeStr}</span>
+                {donePct > 0 && <span className="text-emerald-500 font-medium">· %{donePct}</span>}
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 items-center relative">
+              {shareMsg && <span className="text-xs text-emerald-500 font-bold animate-pulse">{shareMsg}</span>}
+              <div className="relative">
+                <button onClick={() => setShowShareMenu(!showShareMenu)}
+                  className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100 hover:border-blue-300 transition-all"
+                  title="Günü paylaş">📤</button>
+                {showShareMenu && (
+                  <div className="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded-xl shadow-xl p-2 z-50 min-w-[180px]">
+                    <p className="text-[10px] text-stone-400 font-bold uppercase tracking-wider px-2 py-1 mb-1">Günü Paylaş</p>
+                    <button onClick={shareDayWhatsApp} className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-stone-700 hover:bg-green-50 hover:text-green-600 transition-all">
+                      💬 WhatsApp ile Gönder
+                    </button>
+                    <button onClick={shareDayCopy} className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-stone-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                      📋 Panoya Kopyala
+                    </button>
+                    <button onClick={shareDaySMS} className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-stone-700 hover:bg-purple-50 hover:text-purple-600 transition-all">
+                      ✉️ SMS ile Gönder
+                    </button>
+                    <div className="border-t border-stone-100 my-1" />
+                    <button onClick={() => { navigator.clipboard.writeText(buildDaySummary()); setShareMsg('✅'); setTimeout(() => setShareMsg(''), 2000); setShowShareMenu(false) }}
+                      className="w-full text-left flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-stone-700 hover:bg-amber-50 hover:text-amber-600 transition-all">
+                      📊 Rapor Kopyala
+                    </button>
+                  </div>
+                )}
+              </div>
               <button onClick={() => exportJSON(state)} className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">💾</button>
               <button onClick={resetCheckIn} className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">🔄</button>
             </div>
@@ -324,13 +458,17 @@ export default function PlannerPage() {
               <button onClick={submitQA} className="w-10 h-10 bg-blue-500 rounded-xl text-white text-lg flex items-center justify-center hover:bg-blue-600 active:scale-95 shadow-sm">+</button>
             </div>
             <div className="flex gap-2 flex-wrap">
-              {(['aile', 'is'] as const).map(p => (
+              {hat === 'all' && (['aile', 'is'] as const).map(p => (
                 <button key={p} onClick={() => setQaPool(p)} className={`text-xs px-3 py-1 rounded-full border ${qaPool === p ? 'border-blue-400 bg-blue-50 text-blue-600 font-bold' : 'border-stone-200 text-stone-400'}`}>
                   {p === 'aile' ? '👩‍👧 Anne' : '💼 İş'}
                 </button>
               ))}
-              <span className="w-px h-5 bg-stone-200 self-center" />
-              {([{ id: 'today' as const, l: '☀️ Bugün' }, { id: 'tomorrow' as const, l: '📅 Yarın' }, { id: 'pool' as const, l: '📋 Havuza' }]).map(m => (
+              {hat === 'all' && <span className="w-px h-5 bg-stone-200 self-center" />}
+              {stripSel ? (
+                <span className="text-xs px-3 py-1 rounded-full border border-blue-400 bg-blue-50 text-blue-600 font-bold">
+                  📌 {(() => { const sd = new Date(stripSel+'T00:00:00'); return `${DAYS_TR[sd.getDay()]} ${sd.getDate()} ${MONTHS[sd.getMonth()]}` })()}
+                </span>
+              ) : ([{ id: 'today' as const, l: '☀️ Bugün' }, { id: 'tomorrow' as const, l: '📅 Yarın' }, { id: 'pool' as const, l: '📋 Havuza' }]).map(m => (
                 <button key={m.id} onClick={() => setQaMode(m.id)} className={`text-xs px-3 py-1 rounded-full border ${qaMode === m.id ? 'border-blue-400 bg-blue-50 text-blue-600 font-bold' : 'border-stone-200 text-stone-400'}`}>{m.l}</button>
               ))}
             </div>
@@ -379,7 +517,7 @@ export default function PlannerPage() {
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
                 {/* Left sidebar */}
-                <div className="lg:col-span-1 space-y-3">
+                <div className="lg:col-span-1 space-y-3 order-last lg:order-first">
                   <div className="bg-white rounded-2xl border p-4 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <p className="text-sm font-bold text-stone-600">Günlük İlerleme</p>
@@ -419,7 +557,7 @@ export default function PlannerPage() {
                   </button>
                 </div>
                 {/* Right: tasks */}
-                <div className="lg:col-span-2 space-y-5">
+                <div ref={tasksRef} className="lg:col-span-2 space-y-5">
                   {urgentList.length > 0 && (
                     <section>
                       <div className="flex items-center gap-2 py-2 mb-2">
@@ -434,6 +572,7 @@ export default function PlannerPage() {
                     <div className="flex items-center gap-2 py-2 mb-2">
                       <span className="w-2 h-2 rounded-full bg-blue-400" />
                       <span className="text-sm font-bold text-stone-700 uppercase tracking-wide flex-1">Bugünkü Görevler</span>
+                      <button onClick={shareDayCopy} className="text-[10px] px-2 py-1 rounded-lg bg-stone-50 border border-stone-200 text-stone-400 hover:bg-blue-50 hover:text-blue-500 hover:border-blue-200 transition-all" title="Tümünü kopyala">📤</button>
                       <span className="text-xs text-stone-500 bg-stone-100 px-2.5 py-0.5 rounded-full font-bold">{normalToday.length + todayDone.length}</span>
                     </div>
                     {normalToday.length === 0 && todayDone.length === 0 && <div className="text-center py-12 bg-white rounded-2xl border"><p className="text-4xl mb-3">{urgentList.length ? '👆' : '🎉'}</p><p className="text-stone-400">{urgentList.length ? 'Aciller dışında bugün temiz' : 'Bugün boş — iyi günler!'}</p></div>}
@@ -469,12 +608,48 @@ export default function PlannerPage() {
           {/* ─── CATEGORIES VIEW ─── */}
           {!stripSel && view === 'cats' && (
             <div className="max-w-7xl mx-auto">
-              <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
                 <div>
                   <h2 className="text-lg font-bold text-stone-800">Kategoriler</h2>
-                  <p className="text-xs text-stone-400">{catGroups.length} kategori · {state.tasks.length} görev</p>
+                  <p className="text-xs text-stone-400">{catGroups.length} kategori · {state.tasks.length} görev{customCats.length > 0 ? ` · ${customCats.length} özel` : ''}</p>
                 </div>
+                <button onClick={() => setShowAddCat(!showAddCat)}
+                  className="text-xs px-3 py-1.5 rounded-full border border-blue-300 bg-blue-50 text-blue-600 font-bold hover:bg-blue-100 transition-all">
+                  + Kategori Ekle
+                </button>
               </div>
+
+              {/* Add Category Form */}
+              {showAddCat && (
+                <div className="bg-white rounded-2xl border-2 border-blue-200 p-4 mb-6 shadow-md">
+                  <h3 className="text-sm font-bold text-stone-700 mb-3">🏷️ Yeni Kategori Ekle</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                    <input value={newCatName} onChange={e => setNewCatName(e.target.value)} placeholder="Kategori adı..."
+                      className="bg-stone-50 border rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400" />
+                    <div className="flex items-center gap-2">
+                      <input type="color" value={newCatColor} onChange={e => setNewCatColor(e.target.value)}
+                        className="w-10 h-10 rounded-lg border cursor-pointer" />
+                      <span className="text-xs text-stone-400">Renk seç</span>
+                    </div>
+                    <div className="flex gap-2">
+                      {(['is', 'aile'] as const).map(p => (
+                        <button key={p} onClick={() => setNewCatPool(p)}
+                          className={`flex-1 text-xs px-3 py-2 rounded-xl border font-bold transition-all ${
+                            newCatPool === p
+                              ? p === 'is' ? 'border-blue-400 bg-blue-50 text-blue-600' : 'border-pink-400 bg-pink-50 text-pink-600'
+                              : 'border-stone-200 text-stone-400'
+                          }`}>
+                          {p === 'is' ? '💼 İş' : '👩‍👧 Kişisel'}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="flex gap-2">
+                      <button onClick={submitNewCat} className="px-4 py-2 bg-blue-500 text-white rounded-xl text-sm font-bold hover:bg-blue-600">Ekle</button>
+                      <button onClick={() => setShowAddCat(false)} className="px-4 py-2 text-stone-400 text-sm">İptal</button>
+                    </div>
+                  </div>
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 {catGroups.map(cg => {
                   const color = getCatColor(cg.name)
@@ -597,7 +772,17 @@ export default function PlannerPage() {
                       className="bg-stone-50 border rounded-xl px-3 py-2 text-sm outline-none focus:border-blue-400" />
                     <select value={newClientCat} onChange={e => setNewClientCat(e.target.value)}
                       className="bg-stone-50 border rounded-xl px-3 py-2 text-sm outline-none">
-                      {CATS_W.map(c => <option key={c.n} value={c.n}>{c.n}</option>)}
+                      <optgroup label="İş">
+                        {CATS_W.map(c => <option key={c.n} value={c.n}>{c.n}</option>)}
+                      </optgroup>
+                      <optgroup label="Kişisel">
+                        {CATS_P.map(c => <option key={c.n} value={c.n}>{c.n}</option>)}
+                      </optgroup>
+                      {customCats.length > 0 && (
+                        <optgroup label="Özel Kategoriler">
+                          {customCats.map(c => <option key={c.n} value={c.n}>{c.n}</option>)}
+                        </optgroup>
+                      )}
                     </select>
                     <select value={newClientStage} onChange={e => setNewClientStage(e.target.value as PipelineStage)}
                       className="bg-stone-50 border rounded-xl px-3 py-2 text-sm outline-none">
@@ -757,7 +942,14 @@ export default function PlannerPage() {
         </div>
       </div>
 
-      {editingTask && <TaskModal task={editingTask} onSave={(id, updates) => updateTask(id, updates)} onDelete={deleteTask} onClose={() => setEditingTask(null)} />}
+      {editingTask && <TaskModal task={editingTask} onSave={(id, updates) => updateTask(id, updates)} onDelete={deleteTask} onClose={() => setEditingTask(null)} customCats={customCats} />}
+
+      {/* Toast notification */}
+      {toast && (
+        <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-stone-800 text-white text-sm px-4 py-2.5 rounded-xl shadow-lg animate-bounce-in max-w-[90vw]">
+          {toast}
+        </div>
+      )}
     </div>
   )
 }

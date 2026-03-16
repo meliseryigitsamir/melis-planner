@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import type { PlannerState, Task, Note, Idea, Reminder, CheckIn, Pool, NoteType, ClientEntry, PipelineStage } from '@/lib/types'
+import type { PlannerState, Task, Note, Idea, Reminder, CheckIn, Pool, NoteType, ClientEntry, PipelineStage, CustomCat } from '@/lib/types'
 import { loadState, saveState, loadCheckIn, saveCheckIn } from '@/lib/storage'
 import { todayStr, detectPool, detectCat } from '@/lib/utils'
 
@@ -10,7 +10,7 @@ export type Hat = 'all' | 'aile' | 'is'
 export function usePlanner() {
   const [state, setState] = useState<PlannerState>({
     tasks: [], notes: { aile: [], is: [] },
-    ideas: [], reminders: [], completed: [], clients: [],
+    ideas: [], reminders: [], completed: [], clients: [], customCats: [],
   })
   const [checkin, setCheckin] = useState<CheckIn | null>(null)
   const [hydrated, setHydrated] = useState(false)
@@ -134,6 +134,21 @@ export function usePlanner() {
     setState(prev => ({ ...prev, reminders: prev.reminders.filter(r => r.id !== id) }))
   }, [])
 
+  // ── CUSTOM CATEGORIES ─────────────────────────────────
+  const addCustomCat = useCallback((cat: CustomCat) => {
+    setState(prev => ({
+      ...prev,
+      customCats: [...(prev.customCats ?? []), cat],
+    }))
+  }, [])
+
+  const deleteCustomCat = useCallback((name: string) => {
+    setState(prev => ({
+      ...prev,
+      customCats: (prev.customCats ?? []).filter(c => c.n !== name),
+    }))
+  }, [])
+
   // ── CHECK-IN ───────────────────────────────────────────
   const doCheckIn = useCallback((ci: CheckIn) => {
     setCheckin(ci)
@@ -148,6 +163,7 @@ export function usePlanner() {
     state, checkin, hydrated, hat, setHat,
     addTask, toggleTask, updateTask, deleteTask,
     addClient, updateClient, deleteClient,
+    addCustomCat, deleteCustomCat,
     addSmartNote, ideaToTask, deleteIdea, deleteReminder,
     doCheckIn, resetCheckIn,
   }

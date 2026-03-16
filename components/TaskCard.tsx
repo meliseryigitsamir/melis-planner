@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Task } from '@/lib/types'
-import { fmtDate, isPast, catColor } from '@/lib/utils'
+import { fmtDate, isPast, catColor, todayStr } from '@/lib/utils'
 
 interface Props {
   task: Task
@@ -13,7 +13,7 @@ interface Props {
 
 function buildGCalUrl(task: Task): string {
   const title = encodeURIComponent(task.title)
-  const date = task.date ? task.date.replace(/-/g, '') : new Date().toISOString().split('T')[0].replace(/-/g, '')
+  const date = task.date ? task.date.replace(/-/g, '') : todayStr().replace(/-/g, '')
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}&details=${encodeURIComponent('Melis Planner')}`
 }
 
@@ -25,7 +25,7 @@ function buildWhatsAppUrl(task: Task): string {
 export default function TaskCard({ task, onToggle, onClick, showDate = true }: Props) {
   const [showActions, setShowActions] = useState(false)
   const od = !task.done && !!task.date && isPast(task.date)
-  const isToday = task.date === new Date().toISOString().split('T')[0]
+  const isToday = task.date === todayStr()
   const cc = catColor(task.cat)
 
   const copyToClipboard = (e: React.MouseEvent) => {

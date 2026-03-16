@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { Task, Idea, Reminder, NoteType } from '@/lib/types'
-import { catColor } from '@/lib/utils'
+import { catColor, todayStr as getTodayStr } from '@/lib/utils'
 
 interface Props {
   tasks: Task[]
@@ -28,7 +28,7 @@ export default function SmartNotes({
   const [activeType, setActiveType] = useState<NoteType>('aksiyon')
   const [input, setInput] = useState('')
 
-  const todayStr = new Date().toISOString().split('T')[0]
+  const todayStr = getTodayStr()
   const pool = tasks.filter(t => !t.done && t.type === 'backlog')
 
   const handleAdd = () => {

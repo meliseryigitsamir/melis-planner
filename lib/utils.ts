@@ -2,8 +2,16 @@ import { MONTHS_S, ALL_CATS, CATS_W, CATS_P } from './constants'
 import type { Task, Pool } from './types'
 
 // ── DATE ────────────────────────────────────────────────
+function localDateStr(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 export function todayStr(): string {
-  return new Date().toISOString().split('T')[0]
+  return localDateStr(new Date())
+}
+
+export function dateToLocalStr(d: Date): string {
+  return localDateStr(d)
 }
 
 export function isPast(d: string | null): boolean {
@@ -13,7 +21,7 @@ export function isPast(d: string | null): boolean {
 export function addDays(n: number): string {
   const d = new Date()
   d.setDate(d.getDate() + n)
-  return d.toISOString().split('T')[0]
+  return localDateStr(d)
 }
 
 export function fmtDate(ds: string | null): string {
