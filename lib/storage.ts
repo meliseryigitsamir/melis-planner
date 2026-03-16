@@ -66,6 +66,36 @@ export function exportJSON(state: PlannerState): void {
   a.click()
 }
 
+export function importJSON(onLoad: (state: PlannerState) => void): void {
+  const input = document.createElement('input')
+  input.type = 'file'
+  input.accept = '.json'
+  input.onchange = (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result as string) as Partial<PlannerState>
+        const imported: PlannerState = {
+          tasks:      parsed.tasks      ?? [],
+          notes:      parsed.notes      ?? { aile: [], is: [] },
+          ideas:      parsed.ideas      ?? [],
+          reminders:  parsed.reminders  ?? [],
+          completed:  parsed.completed  ?? [],
+          clients:    parsed.clients    ?? [],
+          customCats: (parsed as any).customCats ?? [],
+        }
+        onLoad(imported)
+      } catch {
+        alert('Dosya okunamadı — geçerli bir JSON dosyası seçin.')
+      }
+    }
+    reader.readAsText(file)
+  }
+  input.click()
+}
+
 // ── CHECK-IN ─────────────────────────────────────────────
 export function loadCheckIn(): CheckIn | null {
   if (typeof window === 'undefined') return null

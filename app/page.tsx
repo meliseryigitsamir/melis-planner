@@ -12,7 +12,7 @@ import { filterByRoleEnergy, contextFilter, filterClientsByRole } from '@/lib/fi
 import { getNudges } from '@/lib/nudges'
 import { urgencyScore, todayStr, addDays, isPast, detectPool, detectCat, dateToLocalStr } from '@/lib/utils'
 import { ROLES, ENERGIES, MONTHS, DAYS_TR, DAYS_S, ALL_CATS, CATS_W, CATS_P, PIPELINE_STAGES } from '@/lib/constants'
-import { exportJSON } from '@/lib/storage'
+import { exportJSON, importJSON } from '@/lib/storage'
 import type { Task, View, PipelineStage, ClientEntry, CustomCat } from '@/lib/types'
 
 export default function PlannerPage() {
@@ -22,7 +22,7 @@ export default function PlannerPage() {
     addClient, updateClient, deleteClient,
     addCustomCat, deleteCustomCat,
     addSmartNote, ideaToTask, deleteIdea, deleteReminder,
-    doCheckIn, resetCheckIn,
+    doCheckIn, resetCheckIn, importState,
   } = usePlanner()
 
   const [view, setView] = useState<View>('today')
@@ -359,8 +359,9 @@ export default function PlannerPage() {
                   </div>
                 )}
               </div>
-              <button onClick={() => exportJSON(state)} className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">💾</button>
-              <button onClick={resetCheckIn} className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">🔄</button>
+              <button onClick={() => exportJSON(state)} title="Veriyi indir" className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">💾</button>
+              <button onClick={() => importJSON((imported) => { importState(imported); setToast('📂 Veri başarıyla yüklendi!') })} title="Veri yükle" className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">📂</button>
+              <button onClick={resetCheckIn} title="Rol değiştir" className="text-xs text-stone-400 bg-stone-50 border border-stone-200 rounded-lg px-3 py-1.5 hover:bg-stone-100">🔄</button>
             </div>
           </div>
           {/* Hat Toggle */}

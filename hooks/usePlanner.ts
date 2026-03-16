@@ -159,12 +159,16 @@ export function usePlanner() {
     setCheckin(null)
   }, [])
 
+  const importState = useCallback((imported: PlannerState) => {
+    setState(imported)
+  }, [])
+
   return {
     state, checkin, hydrated, hat, setHat,
     addTask, toggleTask, updateTask, deleteTask,
     addClient, updateClient, deleteClient,
     addCustomCat, deleteCustomCat,
     addSmartNote, ideaToTask, deleteIdea, deleteReminder,
-    doCheckIn, resetCheckIn,
+    doCheckIn, resetCheckIn, importState,
   }
 }
