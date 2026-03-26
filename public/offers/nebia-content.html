@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LÂL Project × Nebia — Stratejik İletişim Ortaklığı</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf9f6;--surface:#fff;--surface-warm:#fdfcfa;
+  --text:#111118;--body:#3a3a4a;--muted:#71717a;--light:#a1a1aa;--faint:#d4d4d8;
+  --rule:#e8e5df;--rule-light:#f2f0ec;
+  --violet:#3b1578;--violet-mid:#6d28d9;--violet-soft:#8b5cf6;
+  --violet-bg:#f5f1fb;--violet-border:#d4c4ee;
+  --green:#065f46;--green-mid:#059669;--green-bg:#ecfdf5;--green-border:#a7d7c5;
+  --amber:#92400e;--amber-bg:#fffbeb;--amber-border:#d4a84c;
+  --oak:#78650d;--oak-bg:#fdfaf0;--oak-border:#c9b45c;
+  --rose:#9f1239;--rose-bg:#fff1f2;--rose-border:#e8a0b0;
+  --cherry:#881337;--cherry-bg:#fdf2f5;--cherry-border:#d4708a;
+  --earth:#5c4033;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.04);
+  --shadow:0 2px 8px rgba(0,0,0,.06);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --radius:10px;--radius-sm:6px;--radius-lg:14px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:'Inter',system-ui,sans-serif;font-size:14.5px;line-height:1.8;font-weight:400;-webkit-font-smoothing:antialiased}
+
+.page{max-width:800px;margin:0 auto;padding:0 48px}
+
+/* ─── HEADER ─── */
+header{padding:60px 0 28px}
+.brand-row{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px}
+.brand-mark{font-weight:700;font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:8px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,3.8vw,38px);line-height:1.12;color:var(--text);letter-spacing:-.02em}
+.subtitle{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:clamp(14px,1.8vw,17px);color:var(--oak);margin-top:6px;line-height:1.5}
+.hdr-meta{text-align:right;font-size:10.5px;color:var(--muted);line-height:1.7;letter-spacing:.01em}
+.hdr-line{height:2px;background:linear-gradient(90deg,var(--violet) 0%,var(--violet-mid) 30%,var(--green-mid) 60%,var(--oak) 100%);margin-top:24px;border-radius:2px;opacity:.7}
+
+/* ─── TABS ─── */
+.tabs{display:flex;gap:0;margin-top:32px;border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{position:relative;padding:14px 16px;font-size:11px;font-weight:600;letter-spacing:.015em;color:var(--muted);cursor:pointer;white-space:nowrap;transition:color .25s;user-select:none;background:none;border:none;border-radius:0;font-family:inherit;line-height:inherit;-webkit-appearance:none;appearance:none}
+.tab::after{content:'';position:absolute;bottom:-1px;left:14px;right:14px;height:2px;background:transparent;border-radius:2px 2px 0 0;transition:background .25s}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--violet)}
+.tab.active::after{background:var(--violet)}
+.panel{display:none;padding:44px 0 32px;animation:fadeUp .45s cubic-bezier(.22,1,.36,1)}
+.panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ─── TYPOGRAPHY ─── */
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);color:var(--text);margin-bottom:20px;line-height:1.15;letter-spacing:-.015em}
+h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(17px,2vw,22px);color:var(--text);margin-bottom:14px;line-height:1.2}
+.overline{font-size:9.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--violet-soft);margin-bottom:8px;display:block}
+p{margin-bottom:14px;max-width:660px}
+strong{font-weight:600;color:var(--text)}
+em{font-style:italic;color:var(--text)}
+
+/* ─── CALLOUTS ─── */
+.callout{margin:24px 0;padding:22px 26px;border-radius:var(--radius);font-size:13.5px;line-height:1.9}
+.callout.violet{background:var(--violet-bg);border-left:3px solid var(--violet)}
+.callout.green{background:var(--green-bg);border-left:3px solid var(--green-border)}
+.callout.amber{background:var(--amber-bg);border-left:3px solid var(--amber-border)}
+.callout.oak{background:var(--oak-bg);border-left:3px solid var(--oak-border)}
+.callout.rose{background:var(--rose-bg);border-left:3px solid var(--rose-border)}
+.callout p{margin:0;max-width:none}
+.callout strong{color:var(--violet)}
+.callout.green strong{color:var(--green)}
+.callout.amber strong{color:var(--amber)}
+.callout.oak strong{color:var(--oak)}
+.callout.rose strong{color:var(--rose)}
+
+/* ─── INSIGHT BOX ─── */
+.insight{margin:28px 0;padding:28px 30px;background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius-lg);position:relative;box-shadow:var(--shadow-sm)}
+.insight::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--green-mid));border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.insight h4{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text);margin-bottom:10px;font-weight:500}
+.insight p{font-size:13.5px;margin-bottom:10px}
+.insight p:last-child{margin-bottom:0}
+
+/* ─── CARDS ─── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:18px 0}
+.card{padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.card h4{font-weight:700;font-size:13px;color:var(--text);margin-bottom:6px}
+.card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.7}
+.card-violet{border-left:3px solid var(--violet)}
+.card-green{border-left:3px solid var(--green)}
+.card-amber{border-left:3px solid var(--amber)}
+.card-oak{border-left:3px solid var(--oak)}
+.card-rose{border-left:3px solid var(--rose)}
+.card-cherry{border-left:3px solid var(--cherry)}
+
+/* ─── NAV CARDS (Tab 0) ─── */
+.nav-card{padding:20px 24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--rule);cursor:pointer;transition:all .25s;display:flex;gap:16px;align-items:flex-start;box-shadow:var(--shadow-sm)}
+.nav-card:hover{border-color:var(--violet-border);box-shadow:var(--shadow);transform:translateY(-1px)}
+.nav-card .nc-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:var(--violet-soft);line-height:1;min-width:28px;opacity:.6}
+.nav-card .nc-body h4{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px}
+.nav-card .nc-body p{font-size:12px;color:var(--muted);margin:0;line-height:1.65}
+
+/* ─── TAGS ─── */
+.tag{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.tag-far{background:#e6f1fb;color:#185fa5;border:1px solid #b8d4f0}
+.tag-algi{background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-border)}
+.tag-satis{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+
+/* ─── FUNNEL ─── */
+.funnel{margin:24px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--rule);box-shadow:var(--shadow-sm)}
+.funnel-layer{padding:22px 26px;display:flex;align-items:flex-start;gap:18px}
+.funnel-layer+.funnel-layer{border-top:1px solid var(--rule-light)}
+.funnel-layer.top{background:#e6f1fb}
+.funnel-layer.mid{background:var(--violet-bg)}
+.funnel-layer.bot{background:var(--green-bg)}
+.funnel-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.funnel-layer.top .funnel-icon{background:#b8d4f0;color:#185fa5}
+.funnel-layer.mid .funnel-icon{background:var(--violet-border);color:var(--violet)}
+.funnel-layer.bot .funnel-icon{background:var(--green-border);color:var(--green)}
+.funnel-content h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.funnel-layer.top .funnel-content h4{color:#185fa5}
+.funnel-layer.mid .funnel-content h4{color:var(--violet)}
+.funnel-layer.bot .funnel-content h4{color:var(--green)}
+.funnel-content p{font-size:13px;margin:0;line-height:1.75;color:var(--body)}
+
+/* ─── TIMELINE ─── */
+.timeline{margin:10px 0}
+.tl-item{display:grid;grid-template-columns:110px 1fr;padding:24px 0;border-bottom:1px solid var(--rule-light)}
+.tl-item:last-child{border-bottom:none}
+.tl-left{text-align:right;padding-right:22px}
+.tl-when{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet)}
+.tl-label{font-size:11px;font-weight:600;color:var(--text);margin-top:2px}
+.tl-nature{font-size:10px;color:var(--green);font-style:italic;margin-top:2px}
+.tl-right{padding-left:22px;border-left:2px solid var(--violet-soft)}
+.tl-title{font-weight:700;font-size:14px;color:var(--text);margin-bottom:6px}
+.tl-items{margin:8px 0 4px;padding:0}
+.tl-i{padding:4px 0;font-size:12.5px;line-height:1.7;display:flex;gap:8px}
+.tl-i::before{content:'—';color:var(--violet-soft);font-weight:600;flex-shrink:0}
+.tl-i strong{color:var(--text)}
+.tl-note{margin-top:10px;padding:10px 14px;background:var(--violet-bg);border-radius:var(--radius-sm);font-size:12px;line-height:1.7;color:var(--body)}
+
+/* ─── RESPONSIBILITY ─── */
+.resp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.resp{padding:20px 22px;border-radius:var(--radius);font-size:12.5px;line-height:1.75}
+.resp h4{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.resp ul{list-style:none;padding:0}
+.resp li{padding:3px 0;padding-left:14px;position:relative}
+.resp li::before{content:'·';position:absolute;left:0;font-weight:700}
+.resp-lal{background:var(--green-bg);border:1px solid var(--green-border)}
+.resp-lal h4{color:var(--green)}.resp-lal li::before{color:var(--green)}
+.resp-client{background:var(--violet-bg);border:1px solid var(--violet-border)}
+.resp-client h4{color:var(--violet)}.resp-client li::before{color:var(--violet)}
+
+/* ─── FEE ─── */
+.fee{background:var(--surface);border:2px solid var(--violet);border-radius:var(--radius-lg);padding:28px 30px;margin:18px 0;box-shadow:var(--shadow)}
+.fee-amount{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--violet);line-height:1}
+.fee-detail{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.8}
+.fee-includes{margin-top:14px;padding-top:14px;border-top:1px solid var(--rule-light)}
+.fee-inc{display:flex;align-items:baseline;gap:8px;padding:5px 0;font-size:12.5px}
+.fee-inc::before{content:'✓';color:var(--green);font-weight:700;font-size:11px}
+.fee-inc strong{color:var(--text)}
+
+/* ─── SUB-TABS (inside panels) ─── */
+.sub-tabs{display:flex;gap:0;margin:20px 0 0;border:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;overflow:hidden;background:var(--surface-warm)}
+.sub-tab{flex:1;padding:14px 18px;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;text-align:center;border:none;background:none;font-family:inherit;transition:all .25s;border-bottom:2px solid transparent}
+.sub-tab:first-child{border-right:1px solid var(--rule)}
+.sub-tab:hover{color:var(--text);background:var(--surface)}
+.sub-tab.active{color:var(--violet);background:var(--surface);border-bottom-color:var(--violet)}
+.sub-tab .st-price{display:block;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;margin-top:2px}
+.sub-tab.active .st-price{color:var(--violet)}
+.sub-tab .st-tag{display:inline-block;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px}
+.sub-tab .st-tag.rec{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.sub-tab .st-tag.foc{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.sub-panel{display:none;border:1px solid var(--rule);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:28px 28px 24px;background:var(--surface);animation:fadeUp .35s ease}
+.sub-panel.active{display:block}
+
+/* ─── MODEL BOX ─── */
+.model-box{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--shadow-sm)}
+.model-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--rule-light);font-size:13px}
+.model-row:last-child{border-bottom:none}
+.model-label{font-weight:600;color:var(--text);min-width:140px}
+
+/* ─── MEDIA PACKAGES ─── */
+.b2p-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.b2p{padding:20px 22px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--rule);position:relative;box-shadow:var(--shadow-sm)}
+.b2p.featured{border:2px solid var(--violet)}
+.b2p.featured::after{content:'DAHİL';position:absolute;top:-8px;right:14px;font-size:8px;font-weight:700;letter-spacing:.1em;background:var(--violet);color:#fff;padding:2px 8px;border-radius:3px}
+.b2p h4{font-weight:700;font-size:13px;color:var(--text);margin-bottom:4px}
+.b2p .b2p-price{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--violet);margin-bottom:6px}
+.b2p p{font-size:11.5px;color:var(--muted);margin:0;line-height:1.7}
+
+/* ─── PROJECT MENU ─── */
+.proj-menu{margin:18px 0}
+.proj-item{display:grid;grid-template-columns:1fr auto;gap:20px;padding:18px 0;border-bottom:1px solid var(--rule-light);align-items:start}
+.proj-item:last-child{border-bottom:none}
+.proj-name{font-weight:700;font-size:13.5px;color:var(--text)}
+.proj-desc{font-size:12px;color:var(--muted);margin-top:2px;line-height:1.7}
+.proj-tags{margin-top:4px;display:flex;gap:4px;flex-wrap:wrap}
+.proj-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--violet);white-space:nowrap;text-align:right}
+.proj-note{font-size:10px;color:var(--muted);text-align:right}
+
+/* ─── COMPARE ─── */
+.compare{width:100%;border-collapse:collapse;margin:18px 0;font-size:12px}
+.compare th{text-align:left;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-soft);font-weight:600;padding:10px 12px;border-bottom:2px solid var(--rule)}
+.compare td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:top;line-height:1.65}
+.compare td:first-child{font-weight:600;color:var(--text);width:28%}
+.compare tr:last-child td{border-bottom:none}
+.compare .check{color:var(--green);font-weight:700}
+.compare .cross{color:var(--light)}
+
+/* ─── EXPAND ─── */
+.expand{margin-top:10px;border:1px solid var(--rule);border-radius:var(--radius);background:var(--surface);overflow:hidden;box-shadow:var(--shadow-sm)}
+.expand+.expand{margin-top:8px}
+.exp-btn{display:flex;justify-content:space-between;align-items:center;padding:15px 24px;cursor:pointer;user-select:none;transition:background .15s}
+.exp-btn:hover{background:rgba(59,21,120,.015)}
+.exp-btn span:first-child{font-weight:500;font-size:13.5px;color:var(--text)}
+.arrow{font-size:11px;color:var(--light);transition:transform .3s}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.exp-body.open{max-height:5000px}
+.exp-inner{padding:0 24px 20px;font-size:13px;line-height:1.85}
+
+/* ─── NATURE STRIP ─── */
+.nature-strip{display:flex;gap:0;margin:20px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--rule)}
+.nature-seg{flex:1;padding:14px 12px;text-align:center;font-size:10px;line-height:1.5}
+.nature-seg .ns-icon{font-size:20px;display:block;margin-bottom:4px}
+.nature-seg .ns-month{font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text)}
+.nature-seg .ns-label{color:var(--muted);font-size:9px;margin-top:2px}
+.nature-seg.active{background:var(--green-bg);border-bottom:3px solid var(--green)}
+.nature-seg.active .ns-month{color:var(--green)}
+
+/* ─── OPPORTUNITY (was urgency) ─── */
+.opportunity{margin:24px 0;padding:26px 30px;background:linear-gradient(135deg,var(--green-bg),var(--oak-bg));border:1px solid var(--green-border);border-radius:var(--radius-lg);text-align:center;box-shadow:var(--shadow-sm)}
+.opportunity h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--green);margin-bottom:4px}
+.opportunity p{font-size:13px;color:var(--body);margin:0;line-height:1.7}
+.opportunity-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--green);font-weight:700;line-height:1;margin:8px 0}
+.opportunity-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+
+/* ─── ICEBERG ─── */
+.iceberg{margin:24px 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--rule);box-shadow:var(--shadow-sm)}
+.ice-top{padding:22px 26px;background:var(--green-bg)}
+.ice-bot{padding:22px 26px;background:var(--surface);border-top:2px dashed var(--rule)}
+.ice-top h4,.ice-bot h4{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px}
+.ice-top h4{color:var(--green)}
+.ice-bot h4{color:var(--muted)}
+.icelist{list-style:none;padding:0}
+.icelist li{padding:3px 0;font-size:13px;line-height:1.7;padding-left:16px;position:relative}
+.icelist li::before{content:'›';position:absolute;left:2px;font-weight:700}
+.ice-top .icelist li::before{color:var(--green)}
+.ice-bot .icelist li::before{color:var(--light)}
+
+/* ─── DELIVERABLES ─── */
+.delivs{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:22px 26px;margin:12px 0;box-shadow:var(--shadow-sm)}
+.deliv{padding:8px 0;border-bottom:1px solid var(--rule-light);display:flex;gap:10px;font-size:13px;line-height:1.7}
+.deliv:last-child{border-bottom:none}
+.deliv-n{font-weight:700;color:var(--violet);width:22px;text-align:right;flex-shrink:0}
+.deliv strong{color:var(--text)}
+.deliv span{color:var(--muted);font-size:12px}
+
+/* ─── STAT ROW ─── */
+.stat-row{display:flex;gap:12px;margin:18px 0;flex-wrap:wrap}
+.stat-box{flex:1;min-width:100px;padding:18px 14px;text-align:center;border-radius:var(--radius);background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow-sm)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--violet);line-height:1}
+.stat-label{font-size:9px;letter-spacing:.06em;color:var(--muted);margin-top:4px;text-transform:uppercase}
+
+/* ─── USP BANNER ─── */
+.usp-banner{margin:28px 0;padding:32px;background:linear-gradient(135deg,var(--violet) 0%,#4c1d95 50%,var(--green) 100%);border-radius:var(--radius-lg);text-align:center;color:#fff;box-shadow:var(--shadow-md)}
+.usp-banner h3{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
+.usp-banner p{font-size:13px;color:rgba(255,255,255,.85);margin:0;max-width:540px;margin-inline:auto;line-height:1.75}
+
+/* ─── DIVIDER ─── */
+.section-divider{height:1px;background:var(--rule);margin:36px 0}
+
+/* ─── FOOTER ─── */
+footer{margin-top:8px;padding:24px 0 48px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;font-size:11px;color:var(--light)}
+.f-brand{font-weight:700;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--violet)}
+
+@media print{
+  body{background:#fff;font-size:11pt}.page{max-width:100%;padding:0 24px}
+  .tabs{display:none}.panel{display:block!important;page-break-before:always}
+  .panel:first-of-type{page-break-before:avoid}
+  .exp-body{max-height:none!important;overflow:visible!important}
+  .arrow{display:none!important}.insight::before{display:none}
+  .usp-banner{background:var(--violet)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(max-width:650px){
+  .page{padding:0 20px}.tab{padding:12px 10px;font-size:10px}
+  .tl-item{grid-template-columns:1fr}.tl-left{text-align:left;padding:0 0 4px}
+  .tl-right{padding:10px 0 0;border-left:none;border-top:2px solid var(--violet-soft)}
+  .model-row{flex-direction:column;gap:2px}
+  .resp-grid,.grid-2,.grid-3,.b2p-grid{grid-template-columns:1fr}
+  .nature-strip{flex-wrap:wrap}
+  .stat-row{flex-direction:column}
+  .proj-item{grid-template-columns:1fr}
+  .proj-price{text-align:left}
+  .funnel-layer{flex-direction:column}
+  .nav-card{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="brand-row">
+    <div>
+      <span class="brand-mark">LÂL Project</span>
+      <h1>Nebia Stratejik<br>İletişim Ortaklığı</h1>
+      <div class="subtitle">Özün İzinde — Kadışehri bütüncül bahçe ekosisteminden doğan ekosistemin sesini dünyaya taşımak</div>
+    </div>
+    <div class="hdr-meta">LÂL-NEB-2026-04<br>Mart 2026 · v2<br>Gizli Belge</div>
+  </div>
+</header>
+<div class="hdr-line"></div>
+
+<nav class="tabs" id="tabbar">
+  <button class="tab active" onclick="S('guide')" id="t-guide" type="button">Başlangıç</button>
+  <button class="tab" onclick="S('lal')" id="t-lal" type="button">LÂL Project</button>
+  <button class="tab" onclick="S('bulgular')" id="t-bulgular" type="button">Araştırma Bulguları</button>
+  <button class="tab" onclick="S('mimari')" id="t-mimari" type="button">Anlat · Koru · Büyüt</button>
+  <button class="tab" onclick="S('yatirim')" id="t-yatirim" type="button">Yatırım</button>
+  <button class="tab" onclick="S('yol')" id="t-yol" type="button">Yol Haritası</button>
+  <button class="tab" onclick="S('baslangic')" id="t-baslangic" type="button">Birlikte Başlangıç</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 0 — BAŞLANGIÇ                                      -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel active" id="panel-guide">
+  <span class="overline">Hoş Geldiniz</span>
+  <h2>Bu Teklif Hakkında</h2>
+
+  <p>Bu belge, Nebia için yapılan ön çalışmaların — eldeki assetler ve briefler üzerinden hazırlanan marka profili taslağı, siteye dayalı dijital değerlendirme, sektör ön araştırması — ışığında oluşturulmuş bir stratejik iletişim önerisidir. İçerdiği analizler <strong>öngörü niteliğinde</strong>dir ve birlikte derinleştirilmeyi beklemektedir.</p>
+
+  <div class="usp-banner">
+    <h3>Kadışehri · 5.000 Dönüm · Tek Ekosistem</h3>
+    <p>Türkiye'nin en kapsamlı bütüncül meyve bahçesi ekosisteminden doğan çok kategorili artisanal gıda ve doğal yaşam markası. 16 çeşit meşe fıçı sirke, pekmez, marmelat, bitki çayı, meyve kurusu, konsantre.</p>
+  </div>
+
+  <p>Bu teklif, Nebia'nın markalaşma sürecini üç temel ilkeyle yönetmeyi önerir:</p>
+
+  <div class="grid-3">
+    <div class="card" style="text-align:center;border-top:3px solid var(--violet);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--violet);margin-bottom:2px">Anlat</h4>
+      <p style="font-size:11px">Hikâyeyi doğru zamanda, doğru kitleye, doğru kanaldan ulaştır</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--green);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--green);margin-bottom:2px">Koru</h4>
+      <p style="font-size:11px">Marka tutarlılığını, bahçenin hassasiyetini ve hikaye kontrolünü sağla</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--oak);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--oak);margin-bottom:2px">Büyüt</h4>
+      <p style="font-size:11px">Araştırma bulgularından doğan fırsatlarla markayı sürdürülebilir şekilde büyüt</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Ne Soruyor, Nereye Bakıyor?</h3>
+
+  <div style="display:flex;flex-direction:column;gap:10px;margin:18px 0">
+    <div class="nav-card" onclick="S('lal')">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <h4>LÂL Project</h4>
+        <p>Bu ortaklığı kim yürütecek? Deneyimi, çalışma modeli, Nebia'ya özel yaklaşımı ne?</p>
+      </div>
+    </div>
+    <div class="nav-card" onclick="S('bulgular')">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <h4>Araştırma Bulguları</h4>
+        <p>Nebia'nın bugünkü konumu, dijital olgunluk düzeyi ve stratejik fırsatlar — veriye dayalı analiz.</p>
+      </div>
+    </div>
+    <div class="nav-card" onclick="S('mimari')">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <h4>Anlat · Koru · Büyüt</h4>
+        <p>Ne yapılacak? Farkındalık, marka koruma ve büyüme katmanlarında somut iş planı.</p>
+      </div>
+    </div>
+    <div class="nav-card" onclick="S('yatirim')">
+      <div class="nc-num">4</div>
+      <div class="nc-body">
+        <h4>Yatırım</h4>
+        <p>Ne kadara, ne dahil, her kuruş nereye gidiyor? Faz yapısı ve ödeme modeli.</p>
+      </div>
+    </div>
+    <div class="nav-card" onclick="S('yol')">
+      <div class="nc-num">5</div>
+      <div class="nc-body">
+        <h4>Yol Haritası</h4>
+        <p>Doğanın takvimiyle senkron 3-dalga kampanya planı: gastronomi, restoran/otel/kafe, son tüketici.</p>
+      </div>
+    </div>
+    <div class="nav-card" onclick="S('baslangic')">
+      <div class="nc-num">6</div>
+      <div class="nc-body">
+        <h4>Birlikte Başlangıç</h4>
+        <p>Onaydan sonra ne olur? İlk adımlar, birlikte planlama süreci ve gelecek vizyonu.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout violet"><p><strong>Önerilen okuma:</strong> "Bütçeyi görmek istiyorum" → <em>Yatırım</em>. "Ne yapacağını anlamak istiyorum" → <em>Anlat · Koru · Büyüt</em>. "Bizi tanımış mı" → <em>Araştırma Bulguları</em>. Herhangi bir sekmeden başlayabilirsiniz — her biri kendi başına anlam taşır.</p></div>
+
+  <div class="callout green"><p><strong>Ön çalışma kapsamı:</strong> Eldeki assetler ve briefler üzerinden, 10 farklı analiz yöntemi kullanılarak bir marka profili taslağı hazırlanmıştır. Bu taslak öngörü niteliğindedir — keşif fazında birlikte doğrulanacak ve derinleştirilecektir.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 1 — LÂL PROJECT                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-lal">
+  <span class="overline">Stratejik İletişim Ortaklığı · 2017'den beri</span>
+  <h2>LÂL Project</h2>
+
+  <p>LÂL Project, davranış bilimleri ve akademik araştırma teknolojisi ile entegre bir butik strateji ortaklığıdır. Marka mühendisliği, iletişim yönetimi ve stratejik büyüme — farklı uzmanlık alanlarını tek bir çatı altında birleştirir.</p>
+
+  <p>LÂL, geleneksel bir ajans değildir. Sabit ekipli, aynı şablonu her müşteriye uygulayan bir yapı yerine — <strong>dışarıdan CMO gibi çalışan bir stratejik iletişim ortağıdır.</strong>. İçeriden bir departmanın disipliniyle, dışarıdan bir stratejistin perspektifiyle çalışır.</p>
+
+  <div class="insight">
+    <h4>Neden "Ajans" Değil, "Ortaklık"?</h4>
+    <p>Ajans modeli kampanya satar — kampanya biter, ilişki biter. LÂL modeli sürekli stratejik düşünme kapasitesi sunar: mesaj mimarisi, medya ilişkileri, marka tutarlılığı, kanal koordinasyonu. Strateji ve uygulama birbirinden ayrılmaz — ama strateji olmadan uygulama yönsüz kalır.</p>
+  </div>
+
+  <h3 style="margin-top:28px">Çalışma Modeli</h3>
+  <div class="grid-3">
+    <div class="card" style="text-align:center;border-top:3px solid var(--violet);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--violet);margin-bottom:2px">Setup</h4>
+      <p style="font-size:10px;color:var(--violet);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em">Marka Temeli</p>
+      <p>Strateji mimarisi, marka DNA, mesaj tasarımı, marka kılavuzu, basın kiti — markanın iletişim altyapısının inşası.</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--green);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--green);margin-bottom:2px">Retainer</h4>
+      <p style="font-size:10px;color:var(--green);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em">Aylık Ortaklık</p>
+      <p>Kesintisiz stratejik destek, garantili medya görünürlüğü, medya ilişkileri, dalga koordinasyonu, performans takibi.</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:3px solid var(--oak);padding:28px 18px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;color:var(--oak);margin-bottom:2px">Project</h4>
+      <p style="font-size:10px;color:var(--oak);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em">İhtiyaca Göre</p>
+      <p>Etkinlik, belgesel, lansman, influencer programı — doğa takvimi ve marka olgunluğuna göre devreye giren projeler.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Melis Eryiğit Samir</h3>
+
+  <p>19 yılı aşkın sektör deneyimi. Kariyerine Fleishman-Hillard affiliate PR ajansında başlamış, SAP, Siemens, P&amp;G gibi küresel markaların Türkiye iletişimini yönetmiştir. 20'den fazla sektörde 50'yi aşkın marka ve kurumla çalışmıştır. Hello Tomorrow'un 10 yıllık Türkiye partneri olarak deep-tech ekosisteminde referans isimdir.</p>
+
+  <p>PhD adayı (yapay zeka aracılı güven ilişkileri), Inc. Türkiye ve Harvard Business Review Türkiye yazarı, üniversitede öğretim görevlisi. Bloomberg HT, Hürriyet Ekonomi gibi ulusal medyada sektör analizi yorumcusu. Akademik derinlik ve saha deneyimini birleştiren nadir profillerden.</p>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Seçili Sektör Deneyimi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p style="color:var(--muted)"><strong>FMCG &amp; Gıda:</strong> P&amp;G (Gillette, Prima) · Unilever (Knorr) · Balparmak · Koroplast</p>
+      <p style="color:var(--muted)"><strong>Teknoloji &amp; İnovasyon:</strong> SAP · Siemens · KuCoin · Skype · Hello Tomorrow (10 yıl)</p>
+      <p style="color:var(--muted)"><strong>Premium &amp; Lifestyle:</strong> Tchibo · Sony Mobile · Inc. Türkiye</p>
+      <p style="color:var(--muted)"><strong>Enerji, Finans &amp; Endüstri:</strong> S&amp;P Global · İş Bankası · Aksa Group · Anadolu Group</p>
+    </div></div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Düşünsel Altyapı</h3>
+  <p>Her stratejik kararın arkasında bir çerçeve vardır. Müşteri toplantılarında teori konuşulmaz — ama her önerinin zemini akademik araştırmaya dayanır:</p>
+
+  <div class="grid-2">
+    <div class="card card-violet">
+      <h4>Algı Mühendisliği</h4>
+      <p>Marka algısı, "ne söylediğiniz" kadar "ne söylemediğiniz"le şekillenir. Nebia'nın Kadışehri hikâyesi bu prensibin canlı örneği: gizemini koruyan marka, değerini korur.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Duyusal Pazarlama</h4>
+      <p>Beş duyuya hitap eden deneyim tasarımı — sirke tadımı, fıçı kokusu, bahçe yürüyüşü. Nebia'nın ürünleri sadece lezzet değil, deneyim sunacak şekilde konumlandırılmalı.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Kabile İnşası</h4>
+      <p>Cova'nın topluluk pazarlaması — Nebia'nın hedefi müşteri değil, "ekosistem elçileri" oluşturmak. Toprak bilimci, şef, fermantasyon uzmanı, biyolog — her biri markanın farklı bir katmanını anlatır.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Anlatı Gücü</h4>
+      <p>Fisher'in Anlatı Paradigması — insanlar verilere değil hikâyelere inanır. Yüzlerce parselin tek bahçeye dönüşme hikâyesi, kadın girişimci anlatısı, doğanın döngüsüne bağlı üretim — her biri güçlü bir anlatı ekseni.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Nebia İçin Neden LÂL</h3>
+
+  <!-- ─── ÖN ARAŞTIRMA HEDİYELERİ ─── -->
+  <div style="margin:40px 0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 8px 32px rgba(88,28,135,.12);border:1px solid rgba(88,28,135,.15)">
+
+    <!-- Gradient Header -->
+    <div style="padding:28px 32px 24px;background:linear-gradient(135deg,var(--violet) 0%,#4c1d95 50%,var(--green) 100%);position:relative">
+      <div style="position:absolute;top:16px;right:20px;background:rgba(255,255,255,.18);color:white;font-size:10px;font-weight:700;padding:5px 14px;border-radius:20px;letter-spacing:1.5px;text-transform:uppercase;backdrop-filter:blur(4px)">Hediyemiz</div>
+      <h3 style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;letter-spacing:.3px">Daha anlaşma yok — ama biz çoktan başladık.</h3>
+      <p style="color:rgba(255,255,255,.82);font-size:14px;line-height:1.6;margin:0;max-width:640px">Aşağıdaki analizleri kendi inisiyatifimizle hazırladık. Kesinleşmiş strateji değil, birlikte derinleştirilecek başlangıç noktaları. Sıfırdan değil, veriye dayalı bir temelden yola çıkıyoruz.</p>
+    </div>
+
+    <div style="padding:28px 32px 32px;background:var(--surface)">
+
+      <!-- HEDİYE 1: MARKA PROFİLİ -->
+      <div style="margin-bottom:24px;padding:20px 22px;background:white;border-radius:12px;border:1px solid var(--rule);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--violet),var(--green))"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="min-width:52px;height:52px;background:linear-gradient(135deg,var(--violet-bg),rgba(88,28,135,.12));border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div style="flex:1">
+            <h4 style="margin:0 0 8px;font-size:16px;font-weight:600;color:var(--violet)">Kapsamlı Marka Profili</h4>
+            <p style="margin:0 0 14px;font-size:13px;line-height:1.65;color:var(--body)">13 akademik çerçeveyle hazırlanmış 10 modüllü analiz: Jung arketip haritası, Aaker kişilik profili, Kapferer kimlik prizması, Keller CBBE piramidi, Blue Ocean stratejisi, rakip konumlandırma ve daha fazlası.</p>
+
+            <!-- Marka profili highlight kartları -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px">
+              <div style="padding:12px 14px;background:var(--violet-bg);border-radius:8px">
+                <div style="font-size:11px;font-weight:600;color:var(--violet);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Arketip DNA</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">Bilen Eller</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Yaratıcı %65 + Bilge %25 + Bakıcı %10</div>
+              </div>
+              <div style="padding:12px 14px;background:var(--green-bg);border-radius:8px">
+                <div style="font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Kişilik Profili</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">Yetkinlik 4.38</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">Aaker 5D en baskın boyut</div>
+              </div>
+              <div style="padding:12px 14px;background:var(--surface-warm);border-radius:8px">
+                <div style="font-size:11px;font-weight:600;color:var(--oak);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">Pazar Konumu</div>
+                <div style="font-size:13px;font-weight:600;color:var(--text)">Mavi Okyanus</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:2px">"Yaratıcı+Bilge" kombinasyonu pazarda boş</div>
+              </div>
+            </div>
+            <p style="margin:0;font-size:11px;color:var(--muted)">Keşif fazında Nebia ekibiyle birlikte doğrulanacak ve derinleştirilecek</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEDİYE 2: SEO EKOSİSTEM ANALİZİ -->
+      <div style="margin-bottom:24px;padding:20px 22px;background:white;border-radius:12px;border:1px solid var(--rule);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--amber),#d97706)"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="min-width:52px;height:52px;background:linear-gradient(135deg,var(--amber-bg),rgba(217,119,6,.12));border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+          </div>
+          <div style="flex:1">
+            <h4 style="margin:0 0 8px;font-size:16px;font-weight:600;color:var(--amber)">SEO Ekosistem Raporu — Sirke Pazarı</h4>
+            <p style="margin:0 0 14px;font-size:13px;line-height:1.65;color:var(--body)">Ahrefs verileriyle hazırlanmış dijital görünürlük analizi. Nebia'nın mevcut durumu, rakiplerin dijital gücü ve açık fırsatlar.</p>
+
+            <!-- Nebia vs Rakipler mini tablo -->
+            <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;line-height:1.5;margin-bottom:12px">
+              <thead>
+                <tr style="border-bottom:2px solid var(--rule)">
+                  <th style="text-align:left;padding:8px 10px;font-weight:600;color:var(--text)">Marka</th>
+                  <th style="text-align:right;padding:8px 10px;font-weight:600">Anahtar Kelime</th>
+                  <th style="text-align:right;padding:8px 10px;font-weight:600">Aylık Trafik</th>
+                  <th style="text-align:right;padding:8px 10px;font-weight:600">Trafik Değeri</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--rule-light)">
+                  <td style="padding:6px 10px;font-weight:600">Wefood</td>
+                  <td style="text-align:right;padding:6px 10px">3.789</td>
+                  <td style="text-align:right;padding:6px 10px">72.386</td>
+                  <td style="text-align:right;padding:6px 10px">522.865 ₺</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--rule-light)">
+                  <td style="padding:6px 10px">Eğricayır</td>
+                  <td style="text-align:right;padding:6px 10px">2.864</td>
+                  <td style="text-align:right;padding:6px 10px">33.622</td>
+                  <td style="text-align:right;padding:6px 10px">219.096 ₺</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--rule-light)">
+                  <td style="padding:6px 10px">Beyorganik</td>
+                  <td style="text-align:right;padding:6px 10px">2.698</td>
+                  <td style="text-align:right;padding:6px 10px">32.928</td>
+                  <td style="text-align:right;padding:6px 10px">148.223 ₺</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--rule-light)">
+                  <td style="padding:6px 10px">Fermente Mutfağım</td>
+                  <td style="text-align:right;padding:6px 10px">1.528</td>
+                  <td style="text-align:right;padding:6px 10px">12.531</td>
+                  <td style="text-align:right;padding:6px 10px">47.347 ₺</td>
+                </tr>
+                <tr style="border-bottom:2px solid var(--rule);background:var(--rose-bg)">
+                  <td style="padding:6px 10px;font-weight:700;color:var(--cherry)">Nebia</td>
+                  <td style="text-align:right;padding:6px 10px;font-weight:700;color:var(--cherry)">12</td>
+                  <td style="text-align:right;padding:6px 10px;font-weight:700;color:var(--cherry)">26</td>
+                  <td style="text-align:right;padding:6px 10px;font-weight:700;color:var(--cherry)">104 ₺</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+
+            <p style="margin:0 0 12px;font-size:12px;color:var(--muted)">Nebia'nın tek güçlü pozisyonu: <strong>"hünnap sirkesi" #1</strong>. Ama pazar çok daha büyük.</p>
+
+            <!-- Fırsat kutusu -->
+            <div style="background:var(--green-bg);padding:14px;border-radius:8px;margin-bottom:8px">
+              <p style="margin:0 0 8px;font-size:13px;font-weight:600;color:var(--green)">Açık fırsatlar — tüm keyword zorlukları 0-1 (çok düşük rekabet)</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px">
+                <div><strong>"sirke rehberi"</strong> — 30.000+ aylık arama</div>
+                <div><strong>"nasıl yapılır" serisi</strong> — 19.700+ aylık arama</div>
+                <div><strong>"sirke faydaları" hub</strong> — 12.000+ aylık arama</div>
+                <div><strong>"organik sirke" ürün sayfası</strong> — CPC 20 ₺ (yüksek ticari değer)</div>
+                <div><strong>"elma suyu konsantresi"</strong> — 3.700 arama, CPC 11 ₺</div>
+                <div><strong>"sirke markaları"</strong> — 500 arama, marka bilinirliği</div>
+              </div>
+            </div>
+            <p style="margin:0;font-size:11px;color:var(--muted)">Kaynak: Ahrefs API · Mart 2026 · Türkiye</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEDİYE 3: DEVAMI YOLDA -->
+      <div style="padding:20px 22px;background:white;border-radius:12px;border:1px dashed var(--rule);position:relative;overflow:hidden;opacity:.85">
+        <div style="position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--oak),var(--oak))"></div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="min-width:52px;height:52px;background:var(--oak-bg);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--oak)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4 style="margin:0 0 6px;font-size:16px;font-weight:600;color:var(--oak)">Devamı yolda...</h4>
+            <p style="margin:0;font-size:13px;line-height:1.65;color:var(--muted)">Sosyal medya ekosistem taraması ve ek analizler keşif fazı başlamadan önce paylaşılacak. Her biri aynı derinlikte, veriye dayalı çalışmalar olacak.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-green">
+      <h4>Gıda &amp; FMCG Deneyimi</h4>
+      <p>P&amp;G, Unilever, Balparmak gibi FMCG markaları ile çalışma geçmişi. Gıda sektöründe medya ilişkileri, lansman yönetimi, marka iletişimi süreçlerini bilen bir profil.</p>
+    </div>
+    <div class="card card-green">
+      <h4>PR &amp; Medya İlişkileri</h4>
+      <p>19 yıllık medya ilişkileri ağı, haber dağıtım partnerlikleri, organik gazeteci temasları. Gastronomi, yaşam, iş dünyası editörleriyle doğrudan ilişki.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Etkinlik &amp; Deneyim Yönetimi</h4>
+      <p>Kongre, zirve ve kurumsal etkinlik deneyimi. Hasat Deneyimi, İstanbul Tadım gibi Nebia'ya özel etkinlikleri konseptten uygulamaya uçtan uca yönetecek kapasite — ayrı ajans maliyeti yok.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Akademik Derinlik &amp; Strateji</h4>
+      <p>PhD çalışması, HBR ve Inc. yazarlığı, üniversite öğretim görevliliği. Nebia'nın iletişim stratejisi sezgiye değil, tüketici davranışı araştırmalarına ve marka psikolojisine dayanır.</p>
+    </div>
+  </div>
+
+  <div class="callout green"><p><strong>Çalışma prensibi:</strong> LÂL'in yaklaşımı danışmanlık sunum modeliyle değil, birlikte çalışma modeliyle ilerler. Strateji birlikte şekillendirilir, kararlar birlikte alınır, süreç birlikte yürütülür.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 2 — ARAŞTIRMA BULGULARI                            -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-bulgular">
+  <span class="overline">Veriye Dayalı Analiz</span>
+  <h2>Araştırma Bulguları</h2>
+
+  <p>"Nebia" — Arapça <em>nebi</em> (نبي) kökünden: <strong>haber veren, sesi duyuran.</strong> Bu teklif, o sesi stratejik bir mimariye dönüştürmek için yapılan araştırmanın bulgularını özetler.</p>
+
+  <h3 style="margin-top:28px">Marka Kimliği — Ne Var?</h3>
+
+  <p>Nebia, sadece sirke markası değildir. Kadışehri'nde yüzlerce parselin birleşmesiyle oluşan bütüncül bir meyve bahçesi ekosisteminden — kiraz, elma, şeftali, aromatik bitkiler, arılar, koyunlar — doğan <strong>çok kategorili bir artisanal gıda ve doğal yaşam markası</strong>dır.</p>
+
+  <div class="iceberg">
+    <div class="ice-top">
+      <h4>Nebia'nın Elinde Olan Varlıklar</h4>
+      <ul class="icelist">
+        <li><strong>Kadışehri'nde yüzlerce parselin birleşimiyle</strong> oluşan 5.000 dönüm bütüncül meyve bahçesi ekosistemi</li>
+        <li><strong>Kadışehri Bahçesi</strong> — medya ilgisini doğal olarak çeken, dikkatli yönetim gerektiren eşsiz lokasyon</li>
+        <li><strong>16 çeşit meşe fıçı sirke</strong> + pekmez, marmelat, bitki çayı, meyve kurusu, konsantre — geniş ürün gamı</li>
+        <li><strong>Aktif e-ticaret sitesi</strong> (nebia.com.tr) — temel dijital altyapı mevcut</li>
+        <li><strong>Marka kimliği hazır</strong> — logo, "Özün İzinde" sloganı, ambalaj ve şişe tasarımı profesyonel</li>
+        <li><strong>Premium fiyat segmenti</strong> (245–2.250 TL bandı) ve kadın girişimci hikâyesi</li>
+        <li><strong>Mayıs 2026'da lansmana hazır</strong> iki yeni ürün: Gelincik Sirkesi, Civanperçemi Sirkesi</li>
+      </ul>
+    </div>
+    <div class="ice-bot">
+      <h4>Ön Çalışmada Tespit Edilen İhtiyaçlar</h4>
+      <ul class="icelist">
+        <li>Marka stratejisi kılavuzu — mevcut kimliğin stratejik değerlendirmesi, iletişim ilkelerinin tanımlanması</li>
+        <li>Hedef kitleye göre mesajlar — gastronoma başka, restoran/otel müdürüne başka, son tüketiciye başka, kurumsal hediye alıcısına başka, uluslararası müşteriye başka</li>
+        <li>Ürün ailesi hiyerarşisi — 5 kategoride 21+ ürünün çatı altında stratejik konumlandırması</li>
+        <li>Dijital keşfedilebilirlik stratejisi — arama motorlarında marka görünürlüğü planı</li>
+        <li>Medya stratejisi — ailenin 2013'ten beri sürdürdüğü bilinçli tercihle uyumlu, kontrollü açılım planı</li>
+        <li>Deneyim tasarımı — hasat ziyareti, İstanbul tadım, fıçı açılışı formatları</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:28px">Dijital Varlık Denetimi</h3>
+
+  <p>nebia.com.tr, kamuya açık veriler üzerinden incelenmiştir. Bu değerlendirme dışarıdan yapılmış bir ön tarama niteliğindedir — iç veriler keşif fazında mevcut dijital ekiple birlikte değerlendirilecektir. Site teknik altyapısı modern ve işlevsel görünmektedir:</p>
+
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num" style="color:var(--amber)">2.7</div><div class="stat-label">Dijital Olgunluk<br>/10</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:var(--green)">7.5</div><div class="stat-label">Ürün &amp; Ambalaj<br>/10</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:var(--green)">8.0</div><div class="stat-label">Marka Hikâyesi<br>Potansiyeli /10</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:var(--amber)">2.0</div><div class="stat-label">Dijital Görünürlük<br>/10</div></div>
+  </div>
+
+  <div class="callout amber"><p><strong>Bulgu (ön değerlendirme):</strong> Dışarıdan bakıldığında, ürün kalitesi ve marka hikâyesi güçlü görünmektedir. Dijital görünürlük ve stratejik iletişim katmanı ise henüz erken aşamadadır. Arama motorlarında "doğal fermantasyon sirke", "artisanal gıda", "meşe fıçı sirke" gibi terimler şu an güçlü bir rakibe ait değil — bu, doğru zamanlamayla değerlendirilebilecek bir alan.</p></div>
+
+  <h3 style="margin-top:28px">Sektör ve Rekabet Ortamı</h3>
+
+  <p>Nebia'nın gireceği pazar hakkında kamuya açık veriler üzerinden yapılmış ön taramadır. Keşif fazında kamuya açık sektör raporları, TÜİK verileri, ticaret odası yayınları ve rakip taramaları ile derinleştirilecektir.</p>
+
+  <div class="grid-2">
+    <div class="card card-violet">
+      <h4>Türkiye Organik Gıda Pazarı</h4>
+      <p>2024'te ~3 milyar USD, 2033'e kadar ~9.2 milyar USD beklenti (IMARC). Yıllık bileşik büyüme oranı ~%12 — küresel ortalamanın üzerinde. Sağlıklı ve doğal beslenme talebi hızla artıyor.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Sirke Pazarı</h4>
+      <p>Küresel sirke pazarı 2025'te ~12.2 milyar USD (GM Insights). Elma sirkesi en hızlı büyüyen segment (~%6-8 CAGR). Türkiye sirke ihracatında henüz küçük ama büyüyen bir oyuncu — ciddi bir büyüme alanı.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Restoran, Otel, Kafe Kanalı</h4>
+      <p>Türkiye gıda servisi pazarı 2026'da ~16.5 milyar USD, %13.5 CAGR ile büyüyor. 3.800+ otel, 150.000+ restoran/kafe. Premium ve butik segmentte artisanal ürün talebi artışta.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>E-Ticaret Gıda</h4>
+      <p>Türkiye'de online gıda ve market siparişi hızla büyüyor — yıllık %20+ büyüme oranıyla milyar dolarlık bir pazar. Doğrudan tüketiciye (D2C) model, perakende raf maliyetini atlayan bir avantaj.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:28px">Rekabet Haritası (Ön Tarama)</h3>
+
+  <div class="model-box">
+    <div class="model-row">
+      <span class="model-label">Kemal Kükrer</span>
+      <span>1915'ten beri. 3 fabrika, 28.000 m². Organik sirkeler, nar ekşisi. Güçlü miras anlatısı, geniş dağıtım.</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Fermente Mutfağım</span>
+      <span>683K Instagram takipçi. Organik, fermente, el yapımı ürünler. Sağlık/wellness konumlandırması. Güçlü dijital varlık.</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Arifoğlu</span>
+      <span>1944'ten beri. 1000+ ürün yelpazesi. Baharatlar, çaylar, organik gıdalar. Geniş perakende ağı, ihracat.</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Nebia'nın Farkı</span>
+      <span>Tek ekosistem (5.000 dönüm bütüncül bahçe), meşe fıçı fermantasyonu, doğa döngüsüne bağlı üretim. Bu hikaye rakiplerin hiçbirinde yok.</span>
+    </div>
+  </div>
+
+  <div class="callout green"><p><strong>Ön gözlem:</strong> Rekabetçi ortamda Kemal Kükrer miras, Fermente Mutfağım topluluk, Arifoğlu ölçek ile konumlanmış. Nebia'nın potansiyel farklılaşma ekseni — tek bahçe ekosistemi ve zaman bazlı üretim — henüz hiçbir rakip tarafından sahiplenilmemiş görünüyor. Bu alan keşif fazında derinlemesine araştırılmalı.</p></div>
+
+  <h3 style="margin-top:28px">Pazara Giriş İhtiyaçları</h3>
+  <p>Araştırmaya göre, Nebia'nın stratejik iletişimin ötesinde ihtiyaç duyabileceği altyapı unsurları:</p>
+
+  <div class="delivs">
+    <div class="deliv"><span class="deliv-n">1</span><span><strong>Sertifikasyonlar</strong> — HACCP, ISO 22000, organik sertifika (varsa), potansiyel Helal akreditasyonu (ihracat için)</span></div>
+    <div class="deliv"><span class="deliv-n">2</span><span><strong>Sektör veri erişimi</strong> — kamuya açık sektör raporları, TÜİK, ticaret odası verileri, Google Trends, rakip web/sosyal medya taramaları</span></div>
+    <div class="deliv"><span class="deliv-n">3</span><span><strong>Perakende ve restoran/otel/kafe dağıtım stratejisi</strong> — butik marketler (MacroCenter vb.), restoran/otel ilişkileri</span></div>
+    <div class="deliv"><span class="deliv-n">4</span><span><strong>İhracat hazırlığı</strong> — uluslararası etiketleme, sertifika, lojistik altyapı (orta-uzun vade)</span></div>
+    <div class="deliv"><span class="deliv-n">5</span><span><strong>Dijital altyapı derinleştirme</strong> — mevcut dijital ekiple birlikte ele alınacak alan (CRM, e-mail, dönüşüm optimizasyonu vb.)</span></div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3 style="margin-top:28px">Doğa Takvimi — Stratejik Pencereler</h3>
+
+  <p>Nebia'nın ürün döngüsü doğanın takvimine bağlıdır. Bu bir kısıt değil, markanın en güçlü hikâye silahıdır: <strong>her mevsim yeni bir bölüm, her hasat yeni bir başlangıç.</strong></p>
+
+  <div class="nature-strip">
+    <div class="nature-seg active">
+      <span class="ns-icon">🌸</span>
+      <span class="ns-month">Nis</span>
+      <span class="ns-label">Çiçeklenme</span>
+    </div>
+    <div class="nature-seg">
+      <span class="ns-icon">🍒</span>
+      <span class="ns-month">Haz–Tem</span>
+      <span class="ns-label">Hasat</span>
+    </div>
+    <div class="nature-seg">
+      <span class="ns-icon">🫙</span>
+      <span class="ns-month">Ağu–Eyl</span>
+      <span class="ns-label">İşleme</span>
+    </div>
+    <div class="nature-seg">
+      <span class="ns-icon">🛢️</span>
+      <span class="ns-month">Eyl–Eki</span>
+      <span class="ns-label">Fıçı Dolum</span>
+    </div>
+    <div class="nature-seg">
+      <span class="ns-icon">❄️</span>
+      <span class="ns-month">Ara–Oca</span>
+      <span class="ns-label">Kış Uykusu</span>
+    </div>
+  </div>
+
+  <div class="opportunity">
+    <h4>Çiçeklenme Penceresi</h4>
+    <div class="opportunity-num">~14</div>
+    <div class="opportunity-label">gün içinde başlıyor</div>
+    <p style="margin-top:8px">Kadışehri kiraz çiçeklenmesi Nisan'ın ilk haftası başlar ve sadece 7–14 gün sürer. Bu pencere, markanın kuruluş hikâyesi için tekrar edilemez bir görsel ve duygusal fırsattır.</p>
+  </div>
+
+  <h3 style="margin-top:28px">Stratejik Fırsat Penceresi</h3>
+
+  <div class="grid-2">
+    <div class="card card-green">
+      <h4>Çiçeklenme Görsel Arşivi</h4>
+      <p>Nisan başı — bahçenin uyanış anı, markanın "doğum sahnesi" görüntüleri. Her yıl sadece bir kez açılır. Belgesel, sosyal medya ve press kit için eşsiz bir arşiv oluşturma fırsatı.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Yeni Ürün Lansmanı</h4>
+      <p>Gelincik ve Civanperçemi sirkeleri Mayıs 2026'da satışa çıkıyor. İletişim altyapısı hazır olursa, yeni ürün lansmanı markanın ilk büyük medya anına dönüşür.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Kontrollü Hikâye Yönetimi</h4>
+      <p>Anadolu Ajansı daha önce Kadışehri bahçesine geldi, sektörde ilgi var. Stratejik bir iletişim planıyla bu ilgi Nebia'nın çerçevesinde yönetilir — hikâye her zaman markanın elinde kalır.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Dijital Görünürlük Fırsatı</h4>
+      <p>Arama motorlarında artisanal gıda ve doğal fermantasyon kategorisinde güçlü bir rakip yok. Bu alanda erken hareket eden marka avantaj kazanır — detaylar mevcut dijital ekiple birlikte değerlendirilecek.</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:28px">Kadışehri Bahçesi — Özel Hassasiyet</h3>
+
+  <div class="callout oak"><p><strong>Araştırma notu:</strong> Aile, 2013'ten bu yana medyadan bilinçli olarak uzak durmuştur. Bu tercih saygı duyulması gereken bir stratejik karardır. Kadışehri bahçesinin medyaya açılımı, ailenin değerleri ve markanın zamanlama stratejisiyle tam uyumlu bir plan dahilinde yürütülmelidir. <strong>Her şeyi herkese söylemeyin — doğru bilgiyi, doğru zamanda, markanın kendi anlatısı çerçevesinde paylaşın.</strong></p></div>
+
+  <div class="callout green"><p><strong>Sonuç:</strong> Nebia'nın önündeki fırsat penceresi açıktır — doğanın takvimi bunu belirliyor. Çiçeklenme 2 hafta içinde başlıyor. Mayıs'ta yeni ürün lansmanı var. Hasat 3 ay sonra. Her aşama markanın hikâyesine yeni bir bölüm ekler. Bu araştırma bulguları, teklifin geri kalanındaki stratejik kararların temelini oluşturur.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 3 — ANLAT · KORU · BÜYÜT                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-mimari">
+  <span class="overline">Stratejik İletişim Mimarisi</span>
+  <h2>Anlat · Koru · Büyüt</h2>
+
+  <p>Ön çalışmada oluşturulan marka profili taslağına göre (Keller CBBE modeli), Nebia'nın ürün ve hikâye tarafı güçlü, farkındalık ve iletişim katmanı ise henüz erken aşamada görünmektedir. Bu teklif, o katmanı üç ilke etrafında tasarlamayı önerir.</p>
+
+  <div class="grid-3" style="margin:28px 0">
+    <div class="card" style="border-top:3px solid var(--violet);padding:24px 20px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--violet);margin-bottom:8px">Anlat</h4>
+      <p style="font-size:12px;line-height:1.75">Nebia'nın sesini duyur. Hikâyeyi doğru zamanda, doğru kitleye, doğru kanaldan ulaştır. Medya görünürlüğü, seçili gastronomi yazarlarına ürün gönderimi, Ayşe Hanım adına sektörde otorite gösteren makaleler.</p>
+      <p style="font-size:10px;color:var(--violet);font-weight:600;margin-top:8px">FARKINDALIĞA HİZMET EDER</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--green);padding:24px 20px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--green);margin-bottom:8px">Koru</h4>
+      <p style="font-size:12px;line-height:1.75">Marka tutarlılığını ve bahçenin hassasiyetini yönet. Hikaye kontrolünü sağla. Kim ne söyleyecek rehberi, ses kılavuzu, bahçeye kim gelecek protokolü.</p>
+      <p style="font-size:10px;color:var(--green);font-weight:600;margin-top:8px">ALGIYA HİZMET EDER</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--oak);padding:24px 20px">
+      <h4 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--oak);margin-bottom:8px">Büyüt</h4>
+      <p style="font-size:12px;line-height:1.75">Araştırma bulgularından doğan fırsatlarla satış kanallarını aç. Restoran/otel/kafe, kurumsal hediye, etkinlik.</p>
+      <p style="font-size:10px;color:var(--oak);font-weight:600;margin-top:8px">SATIŞA DÖNÜŞÜME HİZMET EDER</p>
+    </div>
+  </div>
+
+  <!-- ─── KADİM + TEKNOLOJİ ─── -->
+  <div class="callout oak" style="margin-top:32px">
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--oak);margin-bottom:12px">Yüzyıllık Gelenek + Modern Tarım: Nebia'nın Ana Hikayesi</h4>
+    <p>Nebia'nın en güçlü hikayesi, kadim bilgiyle modern teknolojiyi aynı elde buluşturmasıdır. Yüzyıllık sirke geleneği meşe fıçılarda yaşarken, 5.000 dönüm bahçe ekosistemi çağdaş entegre tarım anlayışıyla yönetilir. Bu gerilim — eskinin bilgeliği ile yeninin hassasiyeti — markanın tüm iletişimini şekillendirecek kreatif eksendir.</p>
+    <p style="margin-top:10px"><strong>Nebia denince akla ne gelecek?</strong> Meşe fıçı, doğa takvimi, "Özün İzinde" sloganı, Kadışehri hikayesi — bunlar Nebia'yı rakiplerinden ayıran benzersiz unsurlardır. Bu unsurların her yerde (web sitesi, ambalaj, sosyal medya, basın) aynı güçte kullanılması gerekir. Keşif fazında bu unsurlar belirlenir ve tutarlı kullanım planı oluşturulur.</p>
+    <p style="margin-top:10px">Bu eksenden doğacak araçlar: <em>marka bülteni (newsletter), basın kiti, kapalı grup buluşmaları, karakter geliştirme çalışmaları</em> — hepsi "eski ve yeni bir arada" gerilimini taşıyan, Nebia'ya özgü anlatı formatları olarak tasarlanacaktır.</p>
+  </div>
+
+  <h3 style="margin-top:32px">Anlat — Sesi Duyurmak</h3>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Garantili Haber Dağıtımı &amp; Medya İlişkileri</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Aylık garantili haber dağıtımı</strong> — minimum 1 dağıtım/ay retainer'a dahil. Haber ajansı servisi (AA/İHA/DHA) dahil, 30+ haber sitesi erişimi. Haberin stratejik önemine göre üst paket seçimi birlikte değerlendirilir.</p>
+      <p><strong>Organik medya ilişkileri</strong> — dağıtım altyapısının ötesinde, gastronomi gazetecileri, food editörleri ve sektör yazarlarıyla birebir ilişki yönetimi, röportaj yerleştirme, editöryal pitch.</p>
+      <p><strong>Ürün gönderimi koordinasyonu</strong> — gastronomi yazarları, food bloggerlar, şeflere stratejik ürün gönderimi. Ödeme yapılmaz; ürün seçimi ve koordinasyon yönetilir. Marka profilindeki "Burak — Gastronomi Meraklısı" profiline ulaşacak kanallar.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Dijital Görünürlük Stratejisi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Arama motoru stratejisi</strong> — "doğal fermantasyon sirke", "artisanal gıda", "meşe fıçı sirke" gibi anahtar kelime kümelerinde marka görünürlüğü hedefi belirleme. Stratejik yön çizilir, uygulama mevcut dijital ekiple senkron yürütülür.</p>
+      <p><strong>GEO farkındalığı</strong> — AI destekli arama motorlarında (Google AI Overview, Perplexity vb.) marka varlığı. Bu yeni alanın fırsatları keşif fazında değerlendirilecek.</p>
+      <p><strong>Not:</strong> Dijital pazarlama operasyonu (SEO teknik uygulama, e-ticaret optimizasyonu, reklam yönetimi) mevcut dijital ekibin alanıdır. LÂL stratejik yönlendirme ve marka tutarlılığı desteği sağlar.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Sektör Otoritesi &amp; İçerik Stratejisi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Doğa döngüsüne bağlı editoryal takvim</strong> — çiçeklenme, hasat, işleme, fıçı dolum, kış uykusu: her mevsim farklı bir içerik bölümü. Marka profilindeki WPP Big IdeaL'e bağlı: "Yediğimiz her şeyin gerçek olduğunu bilerek tüketmek."</p>
+      <p><strong>Ayşe Hanım adına sektör otoritesi makaleleri</strong> — Kadışehri bahçe ekosistemi hikâyesi, kadın girişimcilik, bütüncül tarım ekosistemi, terroir kavramı konularında Nebia'yı sektör otoritesi olarak konumlandıran içerik stratejisi.</p>
+      <p><strong>Newsletter stratejisi</strong> — "Bahçeden Notlar" serisi önerisi. Mevsimsel, duyusal, kişisel. Marka profilindeki ses tonu: "Bilen ama gösteriş yapmayan."</p>
+    </div></div>
+  </div>
+
+  <h3 style="margin-top:32px">Koru — Marka Bütünlüğünü Sağlamak</h3>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Marka Kılavuzu &amp; Hedef Kitleye Göre Mesajlar</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Marka kılavuzu</strong> — kim ne söyleyecek, nasıl söyleyecek, neyi asla söylemeyecek. Mevcut kimliğin (logo, ambalaj, "Özün İzinde" sloganı) değerlendirmesi. Marka analizindeki bulguların uygulanabilir rehbere dönüştürülmesi: Nebia'nın ses tonu, görsel dili, hedef kitlelere özel mesajlar.</p>
+      <p><strong>Hedef kitle bazlı mesaj setleri</strong> — gastronom (Burak), bilinçli tüketici (Zeynep), geleneksel değer arayıcısı (Ayşe Teyze), restoran/otel karar verici, kurumsal hediye alıcısı, uluslararası — her segmente özel dil.</p>
+      <p><strong>Ürün ailesi hiyerarşisi</strong> — 5 kategoride 21+ ürünün Nebia çatısı altında stratejik konumlandırması. Her yeni lansmanda (Gelincik, Civanperçemi gibi) marka tutarlılığı korunur.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Bahçeye Kim Gelecek &amp; Gizlilik Protokolü</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Her şeyi herkese söylemeyin</strong> — 2013'ten beri bilinçli olarak düşük profil korunan lokasyonun stratejik medya açılımı. Doğru bilgiyi, doğru zamanda, markanın kendi anlatısı çerçevesinde paylaşın. AA dahil gelen talepler yönetilir.</p>
+      <p><strong>Ziyaretçi yönetimi</strong> — gazeteci, influencer, şef ziyaretlerinin planlanması, deneyim tasarımı, güvenlik ve gizlilik protokolü.</p>
+      <p><strong>Gizem = Değer</strong> — ne söylemediğiniz, ne söylediğiniz kadar önemli. Bahçenin gizemini korumak, markanın premium algısını güçlendirir.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Kreatif Yönlendirme &amp; Marka Denetimi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Marka kılavuzu denetimi</strong> — tüm temas noktalarında (basılı, dijital, etkinlik materyalleri) marka tutarlılığı kontrolü. Ses tonu kılavuzuna uyum denetimi. Mevcut dijital ekibin ürettiği içeriklerde de marka uyumluluğu değerlendirmesi.</p>
+      <p><strong>Ekip koordinasyonu</strong> — dijital pazarlama danışmanı ile senkron çalışma. LÂL stratejik brief ve marka kılavuzu üretir; mevcut ekip kendi alanında uygular. Karşılıklı bilgi akışı ve düzenli senkronizasyon toplantıları.</p>
+    </div></div>
+  </div>
+
+  <h3 style="margin-top:32px">Büyüt — Stratejik Büyüme</h3>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Dalga Koordinasyonu (Surround Sound)</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>3-dalga modeli</strong> — her dalga, sektör bazlı senkronize kampanya: haber dağıtımı + seçili yazarlara ürün gönderimi + VIP buluşma eş zamanlı yönetilir.</p>
+      <p><strong>Dalga 1 (Nisan–Haziran):</strong> Gastronomi dünyası — çiçeklenme + Gelincik lansmanı. Şefler, food editörler, gastronomi bloggerları.</p>
+      <p><strong>Dalga 2 (Temmuz–Ağustos):</strong> Restoran, otel, kafe kanalı — hasat dönemi. Restoran/otel karar vericileri, catering şirketleri, butik otel sahipleri.</p>
+      <p><strong>Dalga 3 (Eylül–Ekim):</strong> Kurumsal + son tüketici — olgunlaşma. İstanbul Tadım, kurumsal hediye sezonu, bayram paketleri.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Satış Kanalı İletişimi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Restoran/otel/kafe kanalı açılımı</strong> — İstanbul restoranlarına marka tanıtım paketi, tadım organizasyonu, şef işbirliği programı. Hasat Deneyimi etkinliğinden doğan ilişkilerin satışa dönüşümü.</p>
+      <p><strong>Kurumsal hediye programı</strong> — bayram ve yılbaşı sezonu için kurumsal hediye kataloğu ve iletişim stratejisi. "Elmanın 7 Hali" gibi paketlerin kurumsal segmente sunumu.</p>
+      <p><strong>Mevsimsel kampanya önerileri</strong> — doğa takvimine bağlı kampanya konseptleri, hediye seti kurgusu, bayram/sezon stratejisi. Uygulama detayları mevcut dijital ekiple birlikte şekillenir.</p>
+    </div></div>
+  </div>
+
+  <div class="expand">
+    <div class="exp-btn" onclick="toggle(this)"><span>Etkinlik &amp; Deneyim Yönetimi</span><span class="arrow">▼</span></div>
+    <div class="exp-body"><div class="exp-inner">
+      <p><strong>Hasat Deneyimi</strong> — Kadışehri'de immersive deneyim: gazeteci + şef + restoran/otel sahipleri. Beş duyuya hitap eden deneyim tasarımı: görmek (bahçe), dokunmak (hasat), tatmak (fıçı başı), koklamak (lavanta), duymak (doğanın sesi).</p>
+      <p><strong>İstanbul Intimate Tadım</strong> — şef canlı menü + sipariş. Cova'nın kabile pazarlaması: etkinlik bittiğinde katılımcılar marka elçisine dönüşür.</p>
+      <p><strong>Belgesel koordinasyonu</strong> — 5 perdelik doğa döngüsü belgeseli yönetimi: brief, ekip koordinasyonu, medya stratejisi. Kısa format çıktılar (reels, web hero) dahil.</p>
+    </div></div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h3>Roller ve Sorumluluklar</h3>
+  <div class="resp-grid">
+    <div class="resp resp-lal">
+      <h4>LÂL Üstlenir</h4>
+      <ul>
+        <li>Marka mimarisi taslağı ve strateji önerisi</li>
+        <li>Hedef kitleye göre mesajlar, ses kılavuzu, marka rehberi hazırlığı</li>
+        <li>Basın bülteni yazımı ve haber dağıtımı</li>
+        <li>Medya ilişkileri ve influencer koordinasyonu</li>
+        <li>Editoryal takvim ve içerik stratejisi</li>
+        <li>Dalga koordinasyonu önerisi</li>
+        <li>Mevcut ekiple senkron brief ve yönlendirme</li>
+        <li>Bahçeye kim gelecek protokolü önerisi</li>
+        <li>Performans raporlama ve strateji güncellemeleri</li>
+      </ul>
+    </div>
+    <div class="resp resp-client">
+      <h4>Nebia Karar Verir</h4>
+      <ul>
+        <li>Ürün portföyü ve fiyatlandırma</li>
+        <li>Mesaj mimarisi nihai onayı</li>
+        <li>Partner seçimi (LÂL değerlendirir, Nebia seçer)</li>
+        <li>Bütçe tahsisleri ve proje onayları</li>
+        <li>Ürün numunesi ve lojistik</li>
+        <li>İç paydaş koordinasyonu</li>
+        <li>Bahçe erişim izinleri ve gizlilik kuralları</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout amber"><p><strong>Mevcut ekiple çalışma modeli:</strong> Nebia'nın dijital pazarlama danışmanı ile senkron çalışmayı taahhüt ediyoruz. Yapılan çalışmalar doğal olarak mevcut ekibin işini de besler ve yönlendirir — ama bu bir hiyerarşi değil, birlikte yürüme modelidir. LÂL strateji ve brief üretir, mevcut ekip kendi alanında uygulamaya devam eder. Amaç ek maliyet değil, mevcut kaynakların daha verimli kullanılmasıdır.</p></div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 4 — YATIRIM                                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-yatirim">
+  <span class="overline">Yatırım Modeli</span>
+  <h2>Stratejik İletişim Yatırımı</h2>
+
+  <p>İki farklı kapsam öneriyoruz. Nebia'nın ihtiyaçlarına, bütçesine ve önceliklerine göre birlikte karar verilecek.</p>
+
+  <!-- ─── ALTERNATİF MALİYET KARŞILAŞTIRMASI ─── -->
+  <div class="callout oak" style="margin:24px 0 28px">
+    <h4 style="margin-bottom:10px;font-size:15px">Bu işi kendi ekibinizle yapsanız ne olur?</h4>
+    <p style="margin-bottom:14px">Stratejik iletişim, PR ve marka yönetimini dışarıdan almak yerine şirket içinde kurgulamak mümkündür. Ama gerçek maliyeti hesaplamak gerekir:</p>
+
+    <div class="model-box" style="margin:0 0 14px;font-size:13px">
+      <div class="model-row">
+        <span class="model-label">PR & İletişim Müdürü</span>
+        <span>80–110.000 ₺/ay brüt maaş + SGK işveren payı (%24,5) → <strong>~100–137.000 ₺/ay toplam</strong></span>
+      </div>
+      <div class="model-row">
+        <span class="model-label">Marka Stratejisti</span>
+        <span>60–85.000 ₺/ay brüt + SGK (%24,5) → <strong>~75–106.000 ₺/ay</strong></span>
+      </div>
+      <div class="model-row">
+        <span class="model-label">İçerik & Medya İlişkileri</span>
+        <span>Freelance veya yarı zamanlı → <strong>~35–55.000 ₺/ay</strong></span>
+      </div>
+      <div class="model-row">
+        <span class="model-label">Araçlar & abonelikler</span>
+        <span>Medya takip, analiz, CRM, tasarım → <strong>~15–25.000 ₺/ay</strong></span>
+      </div>
+      <div class="model-row">
+        <span class="model-label">Haber dağıtımı</span>
+        <span>Ayrıca satın alınması gerekir → <strong>ek maliyet</strong></span>
+      </div>
+      <div class="model-row" style="border-top:2px solid var(--rule);padding-top:10px;margin-top:4px">
+        <span class="model-label" style="color:var(--oak);font-weight:700">Aylık toplam (in-house)</span>
+        <span style="color:var(--oak);font-weight:700">~225–325.000 ₺ + dağıtım maliyeti ayrıca</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;line-height:1.7">Bu kadroya rağmen şunlar eksik kalır: <strong>medya ağı</strong> (editörlerle ilişki yıllar alır), <strong>sektör deneyimi</strong> (premium gıda markalarına özel bilgi birikimi), <strong>haber dağıtım altyapısı</strong> (30+ site erişimi ve yayın garantisi bireysel olarak kurulamaz) ve <strong>stratejik çerçeve</strong> (marka kılavuzu, hedef kitle mesajları, koruma protokolü gibi yapılar). Bu eksiklikler genellikle deneme-yanılmayla kapatılmaya çalışılır — bu da hem zaman hem bütçe kaybı demektir.</p>
+
+    <p style="font-size:13px;line-height:1.7;margin-top:10px">LÂL modelinde ise stratejik danışmanlık, medya ilişkileri, marka mimarisi, koordinasyon <strong>ve</strong> haber dağıtımı tek bir aylık ücrete dahildir. Ayrıca ilk günden aktif bir medya ağı, test edilmiş yöntemler ve sektöre özel deneyim devreye girer.</p>
+  </div>
+
+  <!-- SUB-TAB BUTTONS -->
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="subS('a')">
+      A: Kapsamlı Stratejik Danışmanlık <span class="st-tag rec">önerilen</span>
+      <span class="st-price">$4.000 + KDV / ay</span>
+    </button>
+    <button class="sub-tab" onclick="subS('b')">
+      B: Odaklı Büyüme Desteği <span class="st-tag foc">odaklı</span>
+      <span class="st-price">$3.800 + KDV / ay</span>
+    </button>
+  </div>
+
+  <!-- ═══ PAKET A ═══ -->
+<div class="sub-panel active" id="sub-a">
+
+  <h3 style="margin-top:18px">Yatırım Çerçevesi — Sektör Verileri</h3>
+
+  <div class="callout violet">
+    <p><strong>Sektör ortalamaları:</strong> Gıda ve içecek sektöründe pazarlama bütçesi genellikle cironun <strong>%3-6</strong>'sıdır (yerleşik markalar). Büyüme aşamasındaki markalar için bu oran <strong>%15-25</strong>'e çıkar. İlk yıl marka inşası için uluslararası referanslar minimum <strong>$75-125K USD/yıl</strong> (~2.5-4.2M ₺) önermektedir.</p>
+  </div>
+
+  <div class="model-box" style="margin:18px 0">
+    <div class="model-row">
+      <span class="model-label">Yerleşik marka</span>
+      <span>Cironun %3-6'sı → pazarlama</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Büyüme aşaması</span>
+      <span>Cironun %15-25'i → pazarlama (Nebia burası)</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Startup / lansman</span>
+      <span>Cironun %25-40'ı → pazarlama</span>
+    </div>
+  </div>
+
+  <p>Bu toplam pazarlama bütçesinin nasıl dağılacağı da önemlidir:</p>
+
+  <div class="model-box" style="margin:18px 0">
+    <div class="model-row">
+      <span class="model-label">Stratejik danışmanlık</span>
+      <span>Toplam bütçenin %30-40'ı — strateji, PR, medya ilişkileri, koordinasyon</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Operasyon & üretim</span>
+      <span>%25-35 — içerik üretimi, görsel/video, sosyal medya yönetimi</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Medya & dağıtım</span>
+      <span>%15-25 — haber dağıtımı, reklam harcaması, influencer</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Araştırma & veri</span>
+      <span>%5-10 — sektör raporları, tüketici araştırması, rakip izleme</span>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <p><strong>Nebia için pratik anlam:</strong> Nebia'nın yıllık cirosuna bağlı olarak toplam pazarlama yatırımı değişir. LÂL'in üstlendiği stratejik danışmanlık kısmı, bu toplam bütçenin yalnızca bir dilimidir — geri kalanı operasyona, üretime ve medyaya gider. Keşif fazında Nebia'nın gerçek verilerini birlikte değerlendirerek bu oranları netleştireceğiz.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── İKİ FAZ ─── -->
+  <h3>LÂL Stratejik Danışmanlık Ücreti</h3>
+  <p>Çalışma iki aşamada ilerler. İlk aşama yoğun keşif ve strateji oluşturma; ikinci aşama uygulama desteği ve büyüme yönlendirmesidir.</p>
+
+  <div class="fee" style="border-color:var(--violet);margin:18px 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <div>
+        <span class="overline" style="margin-bottom:2px">Faz 1 — Keşif, Araştırma & Strateji</span>
+        <div class="fee-amount" style="font-size:28px">$4.000<span style="font-size:14px;color:var(--muted);font-weight:400"> + KDV / ay</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">≈ 177.000 ₺ / ay <span style="opacity:.6">(1 USD = 44,35 ₺ · 26.03.2026)</span></div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:11px;color:var(--muted);display:block">3 ay · toplam $12.000 + KDV</span>
+        <span style="font-size:11px;color:var(--muted);display:block">≈ 532.000 ₺ + dağıtım</span>
+      </div>
+    </div>
+    <div class="fee-detail">Nisan – Haziran 2026 · Keşif + ilk dalga hazırlığı</div>
+
+    <div class="fee-includes" style="margin-top:14px">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);margin-bottom:8px">Stratejik Danışmanlık & Araştırma</p>
+      <div class="fee-inc"><strong>Derinlemesine marka araştırması</strong> — mevcut marka profili taslağının Nebia ekibiyle birlikte doğrulanması, düzeltilmesi, derinleştirilmesi</div>
+      <div class="fee-inc"><strong>Sektör ve rakip analizi (iletişimsel)</strong> — rakip markaların iletişim stratejileri, medya görünürlükleri, dijital varlıkları, konumlandırma analizleri. Nebia'nın iletişimde nasıl farklılaşacağının haritası. <em>Not: Ticari pazar araştırması (pazar büyüklüğü ölçümü, tüketici segmentasyonu, focus group vb.) ek araştırma üyelikleri ve bütçe gerektirir — Nebia'nın elindeki mevcut veriler dahildir ve analize sokulur</em></div>
+      <div class="fee-inc"><strong>Hedef kitle tanımları</strong> — gastronom, sağlık bilinçli tüketici, otel aşçısı, kurumsal hediye müşterisi. İletişimde kimin ne duyacağını belirleyen profiller. <em>Not: Tüketici algı testleri, focus group çalışmaları yapılabilir — bunlar ek maliyettir, önceden bildirilir</em></div>
+      <div class="fee-inc"><strong>Fiyatlandırma & konumlandırma analizi</strong> — rakiplerin fiyatları ve konumlandırmaları üzerinden iletişimsel fırsat analizi. Nebia'nın elindeki satış ve fiyat verileri dahildir ve değerlendirilir</div>
+    </div>
+
+    <div class="fee-includes" style="margin-top:10px">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);margin-bottom:8px">Marka Mimarisi & Koruma</p>
+      <div class="fee-inc"><strong>Marka kılavuzu</strong> — kim ne söyleyecek, nasıl söyleyecek, neyi asla söylemeyecek. Ekibin tamamı aynı dili konuşur, her temas noktasında Nebia aynı sesle konuşur</div>
+      <div class="fee-inc"><strong>Hedef kitle bazlı mesajlar</strong> — gastronoma ayrı, sağlık bilinçli tüketiciye ayrı, otel aşçısına ayrı, kurumsal hediye alan müdüre ayrı mesaj. Ama hepsi aynı özden gelecek</div>
+      <div class="fee-inc"><strong>Bahçenize Kim Gelecek Protokolü</strong> — Bahçeye gelecek ziyaretçilerin ne göreceği, ne öğreneceği, ziyareti nasıl kontrol edeceği planlanır. Nebia'nın gizemini koruyan marka, değerini korur. Bu sistemi birlikte tasarlarız</div>
+      <div class="fee-inc"><strong>Yüzyıllık Gelenek + Modern Tarım stratejisi</strong> — Nebia'nın ana hikayesi: eski ve yeni bir arada. Meşe fıçı, doğa takvimi, "Özün İzinde" gibi benzersiz unsurları (markanın benzersiz unsurları) her yerde aynı güçte kullanmak</div>
+      <div class="fee-inc"><strong>Ürün ailesi hiyerarşisi</strong> — 5 kategoride 21+ ürünün stratejik konumlandırması, yeni lansman şablonları</div>
+    </div>
+
+    <div class="fee-includes" style="margin-top:10px">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);margin-bottom:8px">PR, Medya & İçerik</p>
+      <div class="fee-inc"><strong>Yayın garantili haber dağıtımı</strong> — aylık 1 genişletilmiş dağıtım: 30+ haber sitesinde yayın garantisi, haber ajansı hatları (ANKA/DHA) dahil. <em>Dağıtım maliyeti retainer'a ek olarak faturalandırılır: €625 + KDV / ay</em></div>
+      <div class="fee-inc"><strong>Gastronomi editörleri ile ilişki kurma</strong> — food yazarları, yaşam editörleriyle birebir ilişki. Onlara Nebia'nın hikayesini anlatma, onların yazılarına Nebia'yı yerleştirme, röportaj alma</div>
+      <div class="fee-inc"><strong>Basın bülteni hazırlama</strong> — aylık en az 1 bülten: yazım, görsel yönlendirme, dağıtım koordinasyonu</div>
+      <div class="fee-inc"><strong>İçerik planlaması</strong> — doğa takvimine bağlı editoryal plan (hasat, ekim, mevsimler), hikaye açıları, köşe yazısı taslakları</div>
+      <div class="fee-inc"><strong>Seçili gastronomi yazarlarına ürün gönderimi koordinasyonu</strong> — meşhur food yazarları, Michelin şefleri, tanınmış bloggerları belirleyip stratejik olarak Nebia ürünü göndermek. Bu kişiler kendi ağlarında konuşabilir</div>
+      <div class="fee-inc"><strong>Newsletter "Bahçeden Notlar" stratejisi</strong> — seri tasarımı, mevsimsel içerik planı, abonelere Nebia'nın sesini takip ettirme</div>
+    </div>
+
+    <div class="fee-includes" style="margin-top:10px">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);margin-bottom:8px">Koordinasyon & Raporlama</p>
+      <div class="fee-inc"><strong>Minimum 5 toplantı/ay</strong> — strateji toplantısı, koordinasyon, review, düzenli senkron oturumları</div>
+      <div class="fee-inc"><strong>Mevcut dijital ekiple senkron</strong> — stratejik brief hazırlama, marka tutarlılık rehberi, her ay harita güncelleme</div>
+      <div class="fee-inc"><strong>Dijital görünürlük stratejisi</strong> — arama motorlarında "doğal sirke" arayan insanlar Nebia'yı bulacak mı? Coğrafi olarak İstanbul'da oturan insanlar Nebia'yı görecek mi? Bu farkındalık yol haritası, mevcut dijital ekiple senkron yürütülecek</div>
+      <div class="fee-inc"><strong>Aylık performans raporu</strong> — medya değeri analizi (kaç siteye çıktı, kaç kişi gördü), sonraki ay önerileri</div>
+      <div class="fee-inc"><strong>Tedarikçi koordinasyonu</strong> — fotoğrafçı, videocu, tasarımcı için stratejik brief hazırlama ve yönlendirme</div>
+    </div>
+  </div>
+
+  <div class="fee" style="border-color:var(--green);margin:18px 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <div>
+        <span class="overline" style="margin-bottom:2px;color:var(--green)">Faz 2 — Uygulama & Büyüme</span>
+        <div class="fee-amount" style="color:var(--muted);font-size:24px">Faz 1 sonuçlarına göre belirlenecek</div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:11px;color:var(--muted);display:block">devam eden</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--green)">Temmuz'dan itibaren</span>
+      </div>
+    </div>
+    <div class="fee-detail">Temmuz 2026 → · Büyüme aşaması — kapsam Faz 1 keşfine göre şekillenir</div>
+    <div class="fee-includes">
+      <div class="fee-inc"><strong>Dalga 2 & 3 kampanya koordinasyonu</strong> — restoran/otel kanalı, kurumsal hediye paketi, son tüketici kampanyaları</div>
+      <div class="fee-inc"><strong>Medya ilişkileri</strong> — sürekli editör ağı, yeni kanallar, uluslararası açılım</div>
+      <div class="fee-inc"><strong>Yayın garantili haber dağıtımı</strong> — genişletilmiş paket (30+ sitede yayın garantisi), dağıtım maliyeti ayrıca</div>
+      <div class="fee-inc"><strong>Restoran/Otel/Kafe stratejisi</strong> — bu kanallar için özel B2B iletişim paketi, aşçı programı</div>
+      <div class="fee-inc"><strong>Marka tutarlılığı denetimi</strong> — marka kılavuzu güncellemesi, tüm temas noktaları kontrol</div>
+      <div class="fee-inc"><strong>Aylık performans raporu & strateji güncelleme</strong></div>
+      <div class="fee-inc"><strong>Minimum 5 toplantı/ay</strong></div>
+      <div class="fee-inc"><strong>Mevcut dijital ekiple senkron</strong> — devam</div>
+    </div>
+  </div>
+
+  <div class="callout oak">
+    <p><strong>Faz 2 neden ayrı fiyatlandırılıyor?</strong> Büyüme aşaması, keşiften daha geniş kapsamlıdır: daha fazla kanal (restoran, otel, kafe), daha fazla medya ilişkisi, daha fazla koordinasyon. Faz 1'deki araştırma sonuçlarına göre kapsamı birlikte netleştireceğiz. Bütçe varsa daha iyi iş çıkar — bu açık bir gerçektir.</p>
+  </div>
+
+  <div class="callout violet" style="margin-top:14px">
+    <p><strong>Bu ücrete dahil olanlar:</strong> Yukarıda listelenen tüm stratejik danışmanlık, araştırma, marka mimarisi, PR, medya ilişkileri, içerik stratejisi ve koordinasyon hizmetleri. Haber dağıtımı retainer'a ek olarak faturalandırılır: <strong>aylık 1 genişletilmiş dağıtım €625 + KDV</strong> (30+ haber sitesi, haber ajansı hatları dahil). Ek dağıtım paketleri, etkinlik bütçeleri ve modüler projeler bu ücretin dışındadır.</p>
+    <p style="margin-top:6px;font-size:12px;color:var(--muted)">Kur referansı: 1 USD = 44,35 ₺ · 1 EUR = 51,15 ₺ (26 Mart 2026). USD üzerinden faturalandırılır, dağıtım EUR bazlıdır.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── HABER DAĞITIMI ─── -->
+  <h3>Haber Dağıtım Paketleri</h3>
+  <p>Haber dağıtımı, retainer ücretine ek olarak faturalandırılır. Tüm paketlerde <strong>yayın garantisi</strong> vardır — haberler sadece dağıtılmaz, yayınlanır. A paketinde genişletilmiş, B paketinde temel paket önerilir. Lansman haftaları veya özel kampanyalar için üst paket seçilebilir.</p>
+
+  <div class="b2p-grid">
+    <div class="b2p">
+      <h4>Temel</h4>
+      <div class="b2p-price">€430</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">≈ 22.000 ₺</div>
+      <p>20+ haber sitesi · Bölgesel ve ulusal yayın · Temel medya erişimi · Ek dağıtım ihtiyacı için</p>
+    </div>
+    <div class="b2p featured">
+      <h4>Genişletilmiş</h4>
+      <div class="b2p-price">€625</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">≈ 32.000 ₺</div>
+      <p>30+ haber sitesi · Haber ajansı hatları (ANKA/DHA) · Gastronomi ve yaşam editörlerine erişim · <strong>A paketi için önerilen</strong></p>
+    </div>
+    <div class="b2p">
+      <h4>Premium</h4>
+      <div class="b2p-price">€880</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">≈ 45.000 ₺</div>
+      <p>50+ haber sitesi · Tier-1 ulusal medya · Haber ajansı hatları · Çoklu format</p>
+    </div>
+    <div class="b2p">
+      <h4>Tam Kapsama</h4>
+      <div class="b2p-price">€1.400</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">≈ 72.000 ₺</div>
+      <p>100+ haber sitesi · Tüm ajans hatları · Uluslararası uzantı · Büyük lansman ve kriz iletişimi için</p>
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted);margin-top:10px">Tüm dağıtım fiyatları + KDV'dir ve retainer'a ek olarak faturalandırılır. EUR bazlı, TL karşılıkları referans niteliğindedir (1 EUR = 51,15 ₺ · 26.03.2026). A paketinde aylık genişletilmiş (€625), B paketinde aylık temel (€430) dağıtım önerilir.</p>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── MODÜLER PROJELER ─── -->
+  <h3>Modüler Projeler & Etkinlikler</h3>
+  <p>Aylık retainer'ın dışında, ayrı bütçeyle hayata geçirilebilecek projeler. Bunlar zorunlu değildir — Nebia'nın önceliklerine ve bütçesine göre birlikte karar verilir. Her proje ayrı teklif ve onay süreciyle ilerler.</p>
+
+  <div class="b2p-grid" style="margin:20px 0">
+
+    <div class="b2p" style="border-color:var(--violet)">
+      <h4>Bahçeden Sofraya Belgeseli</h4>
+      <div class="b2p-price" style="color:var(--muted)">Bütçe çalışılıyor</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Ekip teklifleri bekleniyor</div>
+      <p>Nebia'nın hikayesini sinematik dille anlatan belgesel. 5 perdelik doğa döngüsü: çiçeklenme → ekim → hasat → fermantasyon → sofra. Kısa format çıktılar (reels, web hero, sosyal medya kesitleri) dahil. Brief hazır, prodüksiyon ekibi teklif aşamasında.</p>
+    </div>
+
+    <div class="b2p" style="border-color:var(--green)">
+      <h4>Hasat Deneyimi Etkinliği</h4>
+      <div class="b2p-price" style="color:var(--muted)">Bütçe çalışılıyor</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Mekan + lojistik teklifi bekleniyor</div>
+      <p>Kadışehri'de 1-2 günlük davetli etkinlik: gastronomi yazarları, şefler, restoran/otel sahipleri. Bahçe yürüyüşü → hasat katılımı → fıçı başı tadım → şef sofrası. Medya içeriği ve ilişki ağı aynı anda kurulur.</p>
+    </div>
+
+    <div class="b2p" style="border-color:var(--amber)">
+      <h4>İstanbul Tadım Gecesi</h4>
+      <div class="b2p-price" style="color:var(--muted)">Bütçe çalışılıyor</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:2px">Mekan + şef teklifi bekleniyor</div>
+      <p>İstanbul'da 30-50 kişilik premium tadım etkinliği. Tanınmış şefle işbirliği, Nebia ürünleriyle özel menü. Katılımcılar: gastronomi editörleri, food bloggerlar, restoran sahipleri, potansiyel kurumsal müşteriler.</p>
+    </div>
+
+  </div>
+
+  <div class="callout amber">
+    <p><strong>Bütçeler nasıl netleşecek?</strong> Belgesel için prodüksiyon ekibi, etkinlikler için mekan ve lojistik partnerleri teklif aşamasındadır. LÂL, gelen teklifleri değerlendirir ve Nebia'ya seçenekli sunum yapar. Onay olmadan hiçbir harcama yapılmaz. Bütçeler netleştiğinde bu bölüm güncellenecektir.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── MESAI ANALİZİ ─── -->
+  <h3>Aylık Çalışma Kapsamı</h3>
+  <p>LÂL'in aylık döngüde üstleneceği iş kalemlerinin özeti:</p>
+
+  <div class="model-box">
+    <div class="model-row">
+      <span class="model-label">Strateji & Planlama</span>
+      <span>Hedef kitle bazlı mesaj tasarımı, kampanya planlaması, fırsat analizi</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Medya İlişkileri</span>
+      <span>Gastronomi editörleriyle harita yapma, pitch yazımı, ilişki yönetimi, medya listesi bakımı</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">İçerik Üretimi</span>
+      <span>Basın bülteni, köşe yazısı taslağı, hikaye açıları, brief hazırlama</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Koordinasyon</span>
+      <span>Min 5 toplantı/ay, mevcut ekiple senkron, tedarikçi koordinasyonu</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Marka Koruma</span>
+      <span>Bahçenize Kim Gelecek Protokolü, marka kılavuzu denetimi, mesaj tutarlılığı kontrolü</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Dijital Senkron</span>
+      <span>Mevcut dijital ekiple koordinasyon, stratejik brief hazırlama, tutarlılık denetimi</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Araştırma</span>
+      <span>Sektör raporu takibi, rakip izleme, tüketici trend analizi</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Raporlama</span>
+      <span>Aylık performans raporu, medya değeri analizi, sonraki ay önerileri</span>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── ÇALIŞMA KOŞULLARI ─── -->
+  <h3>Çalışma Koşulları</h3>
+
+  <div class="model-box" style="margin-top:14px">
+    <div class="model-row">
+      <span class="model-label">Fatura</span>
+      <span>Aylık, dönem başında</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">KDV</span>
+      <span>Tüm fiyatlar KDV hariçtir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Faz 1 süresi</span>
+      <span>3 ay — karşılıklı mutabakat ile uzatılabilir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Ücret yapısı</span>
+      <span>Toplam Faz 1 ücreti aylara bölünmüştür. Faz 1 uzarsa (örn. 4. ay) <strong>ek ücret alınmaz</strong></span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Faz 2 başlangıç</span>
+      <span>Faz 1 sonuçlarına göre kapsam ve fiyat birlikte belirlenir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Toplantılar</span>
+      <span><strong>Minimum 5 toplantı/ay</strong> — strateji, koordinasyon, review, senkron</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Minimum taahhüt</span>
+      <span>Faz 1: 3 ay · Faz 2: kapsam birlikte belirlenir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Fesih</span>
+      <span>Faz 2 döneminde 30 gün önceden bildirim ile</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Newsletter</span>
+      <span><strong>İlk 5 sayı ücrete dahildir.</strong> Tasarım, içerik yazımı ve gönderim. Sonraki sayılar için kapsam birlikte değerlendirilir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Ek araç maliyetleri</span>
+      <span>Medya takip, e-posta pazarlama platformu vb. araç ihtiyacı doğarsa maliyet önceden bildirilir ve onay alınır</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Modüler projeler</span>
+      <span>Ayrı teklif ve onay süreci ile</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Dağıtım yükseltmeleri</span>
+      <span>İhtiyaç bazlı, önceden onay ile</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Teklif geçerliliği</span>
+      <span><strong>30 gün</strong> — 30 Nisan 2026'ya kadar</span>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:28px">
+    <h4>Yatırımın Mantığı</h4>
+    <p>Stratejik iletişim yatırımı, doğru yapıldığında, marka bilinirliği ve satış kanalları üzerinde kümülatif etki yaratır. İlk 6 ayda temeller atılır; sonraki dönemlerde bu temeller üzerine inşa edilir. Önemli olan doğru zamanda, doğru kapsamda başlamaktır.</p>
+  </div>
+
+  </div><!-- /sub-a -->
+
+  <!-- ═══ PAKET B ═══ -->
+  <div class="sub-panel" id="sub-b">
+
+  <h3 style="margin-top:4px">B Paketi — Odaklı Büyüme Desteği</h3>
+  <p>Stratejik mimari yerine somut çıktı odaklı bir çalışma modeli. Nebia'nın mevcut kaynaklarını destekleyen, her ay ölçülebilir teslimatlarla ilerleyen bir yaklaşım.</p>
+
+  <div class="fee" style="border-color:var(--amber-border);margin:18px 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <div>
+        <span class="overline" style="margin-bottom:2px;color:var(--amber)">B Paketi — Odaklı Büyüme Desteği</span>
+        <div class="fee-amount" style="font-size:28px;color:var(--amber)">$3.800<span style="font-size:14px;color:var(--muted);font-weight:400"> + KDV / ay</span></div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">≈ 168.500 ₺ / ay <span style="opacity:.6">(1 USD = 44,35 ₺ · 26.03.2026)</span></div>
+      </div>
+      <div style="text-align:right">
+        <span style="font-size:11px;color:var(--muted);display:block">3 ay · toplam $11.400 + KDV</span>
+        <span style="font-size:11px;color:var(--muted);display:block">≈ 505.000 ₺ + dağıtım</span>
+      </div>
+    </div>
+    <div class="fee-detail">Nisan – Haziran 2026 · Odaklı büyüme desteği</div>
+
+    <div class="fee-includes" style="margin-top:14px">
+      <p style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:8px">Aylık Sabit Teslimatlar</p>
+      <div class="fee-inc"><strong>Rakip izleme raporu</strong> — Kemal Kükrer, Fermente Mutfağım, Arifoğlu gibi rakiplerin ne yaptığını izleme: fiyat değişiklikleri, yeni ürünler, medya görünümleri, kampanya analizi</div>
+      <div class="fee-inc"><strong>Arama trendi analizi</strong> — "doğal sirke", "artisanal gıda", "meşe fıçı" gibi anahtar kelimeler için kaç kişi arama yapıyor, mevsimsel fırsat nerede? Bu sonuçları dijital ekibe brief'leyelim</div>
+      <div class="fee-inc"><strong>İçerik takvimi & hikaye açıları</strong> — haftalık editoryal brief'ler, doğa takvimine bağlı tema önerileri (ekim, hasat, mevsimler)</div>
+      <div class="fee-inc"><strong>Basın bülteni</strong> — aylık 1 adet yazım + temel dağıtım (20+ haber sitesi, yayın garantili)</div>
+      <div class="fee-inc"><strong>Dijital ekibe stratejik brief</strong> — aylık bir sayfa, net aksiyon maddeleri, marka tutarlılık rehberi</div>
+      <div class="fee-inc"><strong>Marka tutarlılığı taraması</strong> — site, sosyal medya ve basılı materyallerde aylık denetim. Nebia'nın sesi aynı mı, görsel tutarlı mı?</div>
+      <div class="fee-inc"><strong>Newsletter "Bahçeden Notlar" taslağı</strong> — seri tasarımı, aylık 1 adet içerik hazır teslim</div>
+      <div class="fee-inc"><strong>Medya ilişkileri — temel düzey</strong> — gastronomi editörleri listesi yapma ve bakım, pitch yazımı, medya takibi</div>
+      <div class="fee-inc"><strong>Mevsimsel kampanya önerisi</strong> — doğa takvimi bağlantılı, dijital ekibe uygulanabilir brief</div>
+      <div class="fee-inc"><strong>3 toplantı/ay</strong> — strateji review, koordinasyon, brief sunumu</div>
+    </div>
+  </div>
+
+  <div class="callout amber">
+    <p><strong>Bu ücrete dahil olanlar:</strong> Yukarıdaki tüm teslimatlar. Aylık haber dağıtımı ayrıca faturalandırılır: <strong>1 temel paket €430/ay</strong> (20+ site, yayın garantili). Ek dağıtım talepleri ve modüler projeler ayrıca.</p>
+    <p style="margin-top:6px;font-size:12px;color:var(--muted)">Kur referansı: 1 USD = 44,35 ₺ · 1 EUR = 51,15 ₺ (26 Mart 2026). USD üzerinden faturalandırılır, dağıtım EUR bazlıdır.</p>
+  </div>
+
+  <h3 style="margin-top:28px">B Paketine Dahil Olmayan (A'da Var)</h3>
+  <div class="model-box">
+    <div class="model-row"><span class="model-label">Marka mimarisi</span><span>Marka kılavuzu, hedef kitle tanımı, ses rehberi</span></div>
+    <div class="model-row"><span class="model-label">Bahçenize Kim Gelecek Protokolü</span><span>Ziyaretçi yönetimi, gizlilik ve kontrollü bilgi paylaşımı</span></div>
+    <div class="model-row"><span class="model-label">Yüzyıllık Gelenek + Modern Tarım</span><span>Kreatif eksen tasarımı, benzersiz marka unsurları (meşe fıçı, doğa takvimi vb.)</span></div>
+    <div class="model-row"><span class="model-label">Derinlemesine araştırma</span><span>Sektör verileri, tüketici araştırması, fiyatlandırma analizi</span></div>
+    <div class="model-row"><span class="model-label">Restoran/Otel/Kafe stratejisi</span><span>Bu kanallar için özel B2B iletişim paketi, aşçı programı</span></div>
+    <div class="model-row"><span class="model-label">Etkinlik planlaması</span><span>Hasat deneyimi, tadım gecesi, modüler proje koordinasyonu</span></div>
+    <div class="model-row"><span class="model-label">Seçili yazarlara ürün gönderimi</span><span>Meşhur food yazarları, şeflere stratejik ürün gönderimi planlaması</span></div>
+    <div class="model-row"><span class="model-label">Ayşe Hanım adına sektör otoritesi yazıları</span><span>Sektör otoritesi makaleleri, köşe yazısı, ön plana çıkarma</span></div>
+    <div class="model-row"><span class="model-label">Dağıtım paketi</span><span>Genişletilmiş 30+ site (B'de Temel 20+ site)</span></div>
+    <div class="model-row"><span class="model-label">Toplantılar</span><span>5/ay (B'de 3/ay)</span></div>
+  </div>
+
+  <div class="callout oak" style="margin-top:20px">
+    <p><strong>B'den A'ya geçiş:</strong> B paketiyle başlayıp ilk 3 ayın sonuçlarına göre A paketine geçmek mümkündür. B'de yapılan çalışmalar A'nın temelini oluşturur — hiçbir iş boşa gitmez.</p>
+  </div>
+
+  <div class="model-box" style="margin-top:28px">
+    <div class="model-row">
+      <span class="model-label">Fatura</span>
+      <span>Aylık, dönem başında</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">KDV</span>
+      <span>Tüm fiyatlar KDV hariçtir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Süresi</span>
+      <span>3 ay — karşılıklı mutabakat ile uzatılabilir</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Ücret yapısı</span>
+      <span>Toplam ücret aylara bölünmüştür. Süre uzarsa <strong>ek ücret alınmaz</strong></span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Toplantılar</span>
+      <span><strong>Minimum 3 toplantı/ay</strong> — review, koordinasyon, brief</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Newsletter</span>
+      <span><strong>İlk 5 sayı ücrete dahildir.</strong> Tasarım, içerik ve gönderim</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Ek araç maliyetleri</span>
+      <span>İhtiyaç doğarsa önceden bildirilir ve onay alınır</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Fesih</span>
+      <span>30 gün önceden bildirim</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label">Teklif geçerliliği</span>
+      <span><strong>30 gün</strong> — 30 Nisan 2026'ya kadar</span>
+    </div>
+  </div>
+
+  </div><!-- /sub-b -->
+
+  <!-- ═══ A vs B KARŞILAŞTIRMA ═══ -->
+  <div style="margin-top:32px">
+  <h3>A ve B Paketleri Karşılaştırması</h3>
+
+  <div class="compare" style="margin:24px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;line-height:1.6">
+      <thead>
+        <tr style="border-bottom:2px solid var(--rule)">
+          <th style="text-align:left;padding:12px 14px;font-weight:600;width:40%;color:var(--text)">Özellik</th>
+          <th style="text-align:center;padding:12px 14px;font-weight:600;color:var(--green);width:30%;background:var(--green-bg);border-radius:8px 0 0 0">A: Kapsamlı</th>
+          <th style="text-align:center;padding:12px 14px;font-weight:600;color:var(--amber);width:30%;background:var(--amber-bg);border-radius:0 8px 0 0">B: Odaklı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text);font-weight:600">Aylık ücret</td>
+          <td style="text-align:center;padding:10px 14px;font-weight:600;background:var(--green-bg);color:var(--green)">$4.000</td>
+          <td style="text-align:center;padding:10px 14px;font-weight:600;background:var(--amber-bg);color:var(--amber)">$3.800</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px">Fark/ay</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)">—</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg);color:var(--muted)">$200 fark</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px">USD karşılığı/ay</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)">$4.000</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)">$3.800</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px">3 aylık toplam</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)">$12.000</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)">$11.400</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Haber dağıtımı</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px">her ay dahil</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Genişletilmiş</span><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">30+ site</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--amber);font-weight:600">✓ Temel</span><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">20+ site</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Toplantı/ay</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">strateji + koordinasyon</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">5 toplantı</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--amber);font-weight:600">3 toplantı</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Marka mimarisi & kılavuzu</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">kim ne söyleyecek, nasıl söyleyecek</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Tam</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--muted);opacity:.7">—</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Bahçenize Kim Gelecek Protokolü</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">ziyaretçi yönetimi, gizlilik</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--muted);opacity:.7">—</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Yüzyıllık + Modern kreatif ekseni</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">meşe fıçı, doğa takvimi vb. unsurlar</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Derinlemesine</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--muted);opacity:.7">—</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Sektör & tüketici araştırması</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">kim alıyor, ne zaman, neden</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Derin</span><span style="display:block;font-size:11px;color:var(--muted)">sektör raporları + müşteri profili</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--amber)">✓ Rakip izleme</span><span style="display:block;font-size:11px;color:var(--muted)">aylık rapor</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Medya ilişkileri</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">gastronomi editörleriyle çalışma</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Derinlemesine</span><span style="display:block;font-size:11px;color:var(--muted)">röportaj, pitch</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--amber)">✓ Temel</span><span style="display:block;font-size:11px;color:var(--muted)">liste, pitch</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>İçerik stratejisi</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">doğa takvimine bağlı planlar</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ + Sektör Otoritesi</span><span style="display:block;font-size:11px;color:var(--muted)">Ayşe makaleleri</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--amber)">✓ Takvim & brief'ler</span><span style="display:block;font-size:11px;color:var(--muted)">haftalık</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Restoran/Otel/Kafe stratejisi</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">B2B iletişim paketi</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓ Tam</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--muted);opacity:.7">—</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--rule-light)">
+          <td style="padding:10px 14px;color:var(--text)"><strong>Seçili yazarlara ürün gönderimi</strong><span style="display:block;font-size:11px;color:var(--muted);font-weight:400">meşhur şef, food blogger</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg)"><span style="color:var(--green);font-weight:600">✓</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg)"><span style="color:var(--muted);opacity:.7">—</span></td>
+        </tr>
+        <tr style="border-bottom:2px solid var(--rule)">
+          <td style="padding:10px 14px;font-weight:600;color:var(--text)">Kimin için ideal?</td>
+          <td style="text-align:center;padding:10px 14px;background:var(--green-bg);font-size:12px;line-height:1.5"><span style="color:var(--green);font-weight:600">Stratejik ortak arayan</span><span style="display:block;color:var(--body);font-weight:400;margin-top:4px">Marka temelden kurmak, tam koruma, tüm kanallar</span></td>
+          <td style="text-align:center;padding:10px 14px;background:var(--amber-bg);font-size:12px;line-height:1.5"><span style="color:var(--amber);font-weight:600">Hızlı başlamak isteyen</span><span style="display:block;color:var(--body);font-weight:400;margin-top:4px">Net çıktılar, ölçülebilir sonuçlar, sonradan A'ya geçme seçeneği</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout green" style="margin-top:20px">
+    <p><strong>Aralarındaki fark ne?</strong> Aylık $200. Bu farkla A paketinde ek olarak şunlar var:</p>
+    <ul style="margin:12px 0 0 0;padding-left:20px;font-size:13.5px">
+      <li style="margin:6px 0">Tam marka mimarisi ve kılavuzu (kim ne söyleyecek)</li>
+      <li style="margin:6px 0">Bahçenize Kim Gelecek ziyaretçi yönetim protokolü</li>
+      <li style="margin:6px 0">Yüzyıllık Gelenek + Modern Tarım kreatif ekseni</li>
+      <li style="margin:6px 0">Derinlemesine sektör ve tüketici araştırması</li>
+      <li style="margin:6px 0">Restoran/Otel/Kafe kanalı stratejisi</li>
+      <li style="margin:6px 0">30+ site haber dağıtımı (B'de 20+ site)</li>
+      <li style="margin:6px 0">Haftada 1+ ekstra toplantı (5'e karşı 3)</li>
+      <li style="margin:6px 0">Ayşe Hanım adına sektörde otorite gösteren makaleler</li>
+    </ul>
+  </div>
+
+  <div class="callout oak" style="margin-top:14px">
+    <p><strong>B'den A'ya geçiş:</strong> B paketiyle başlayıp ilk 3 ayın sonuçlarına göre A paketine geçmek mümkündür. B'de yapılan tüm çalışmalar A stratejisinin temelini oluşturur — hiçbir iş boşa gitmez. Sadece kapsamı genişletir ve derinleştirirsiniz.</p>
+  </div>
+
+  </div><!-- /comparison -->
+
+</div><!-- /panel-yatirim -->
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 5 — YOL HARİTASI                                    -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-yol">
+  <span class="overline">Doğanın Takvimiyle Senkron</span>
+  <h2>3-Dalga Yol Haritası</h2>
+
+  <p>Nebia'nın iletişim takvimi, pazarlama endüstrisinin yapay sezonlarına değil — <strong>doğanın kendi ritmine</strong> bağlıdır. Kadışehri'ndeki 5.000 dönüm bahçe, yılın her döneminde farklı bir hikaye anlatır. Bu yol haritası, o hikayeleri doğru zamanda, doğru kitleye, doğru kanaldan ulaştırmak için tasarlanmıştır.</p>
+
+  <div class="callout green">
+    <p><strong>Neden "dalga"?</strong> Geleneksel kampanya takvimi düz bir çizgidir — başlar, biter, tekrarlar. Nebia'nın iletişimi ise bir doğa döngüsüdür: çiçeklenme → hasat → olgunlaşma. Her dalga bir öncekinin üzerine inşa eder. Bilgi birikir, ilişkiler derinleşir, algı katmanlaşır.</p>
+  </div>
+
+  <!-- ─── DOĞA TAKVİMİ ─── -->
+  <div class="nature-strip">
+    <div class="nature-seg active">
+      <span class="ns-icon">🌸</span>
+      <span class="ns-month">Nis</span>
+      <span class="ns-label">Çiçeklenme</span>
+    </div>
+    <div class="nature-seg active">
+      <span class="ns-icon">🌿</span>
+      <span class="ns-month">May</span>
+      <span class="ns-label">Gelincik</span>
+    </div>
+    <div class="nature-seg active">
+      <span class="ns-icon">☀️</span>
+      <span class="ns-month">Haz</span>
+      <span class="ns-label">Olgunlaşma</span>
+    </div>
+    <div class="nature-seg" style="background:var(--amber-bg);border-bottom:3px solid var(--amber)">
+      <span class="ns-icon">🍎</span>
+      <span class="ns-month" style="color:var(--amber)">Tem</span>
+      <span class="ns-label">Hasat</span>
+    </div>
+    <div class="nature-seg" style="background:var(--amber-bg);border-bottom:3px solid var(--amber)">
+      <span class="ns-icon">🫙</span>
+      <span class="ns-month" style="color:var(--amber)">Ağu</span>
+      <span class="ns-label">Fıçılama</span>
+    </div>
+    <div class="nature-seg" style="background:var(--violet-bg);border-bottom:3px solid var(--violet)">
+      <span class="ns-icon">🍂</span>
+      <span class="ns-month" style="color:var(--violet)">Eyl</span>
+      <span class="ns-label">Olgunlaşma</span>
+    </div>
+    <div class="nature-seg" style="background:var(--violet-bg);border-bottom:3px solid var(--violet)">
+      <span class="ns-icon">🏛️</span>
+      <span class="ns-month" style="color:var(--violet)">Eki</span>
+      <span class="ns-label">Kurumsal</span>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── DALGA 1 ─── -->
+  <h3 style="color:var(--green)">Dalga 1 — Çiçeklenme</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Nisan – Haziran 2026 · Gastronomi Dünyasına Giriş · Faz 1</p>
+
+  <p>İlk dalga, Nebia'yı Türkiye'nin gastronomi çevresine tanıtmayı hedefler. Kadışehri bahçesinin çiçeklenme döneminde başlayan bu dalga, Gelincik sirkesinin lansmanıyla zirveye ulaşır.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Nisan</div>
+        <div class="tl-label">Hafta 1-2</div>
+        <div class="tl-nature">🌸 çiçeklenme</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Altyapı & Keşif</div>
+        <div class="tl-items">
+          <div class="tl-i">Marka kılavuzu finalizasyonu — hedef kitleye göre mesajlar, ses tonu rehberi, Bahçeye Kim Gelecek protokolü</div>
+          <div class="tl-i">Medya listesi oluşturma — gastronomi editörleri, yaşam yazarları, food influencerlar</div>
+          <div class="tl-i">Dijital görünürlük stratejisi taslağı — mevcut dijital ekiple paylaşılacak brief</div>
+          <div class="tl-i">Ali Bey ekibiyle ilk koordinasyon toplantısı — kreatif yönlendirme çerçevesi</div>
+          <div class="tl-i">Marka kılavuzu taslağı — görsel dil, ses tonu, yapılmaması gerekenler</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> Marka Kılavuzu v1, Medya Veritabanı, Dijital Görünürlük Brief'i</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Nisan</div>
+        <div class="tl-label">Hafta 3-4</div>
+        <div class="tl-nature">🌸 çiçeklenme</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">İlk Dokunuşlar</div>
+        <div class="tl-items">
+          <div class="tl-i">"Bahçeden" hikaye serisi başlangıcı — çiçeklenme görselleri + anlatım</div>
+          <div class="tl-i">Gastronomi editörlerine bire bir pitch — "Anadolu'nun en sessiz markası" açısı</div>
+          <div class="tl-i">İlk basın bülteni dağıtımı — Nebia'nın hikayesi, Kadışehri ekosistemi</div>
+          <div class="tl-i">Ayşe Hanım adına sektör otoritesi makalesi taslağı</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> İlk medya yerleşimleri, İçerik planı Mayıs</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Mayıs</div>
+        <div class="tl-label">Hafta 5-8</div>
+        <div class="tl-nature">🌿 gelincik dönemi</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Gelincik Lansmanı</div>
+        <div class="tl-items">
+          <div class="tl-i"><strong>Gelincik Sirkesi lansman kampanyası</strong> — basın bülteni + seçili yazarlara ürün gönderimi</div>
+          <div class="tl-i">Civanperçemi sirkesi ön duyurusu — "yakında" teaserları</div>
+          <div class="tl-i">İkinci basın dağıtımı — ürün odaklı, tadım notları</div>
+          <div class="tl-i">İçerik stratejisi devreye girer — hikaye açıları, arama trendleri brief'i dijital ekiple paylaşılır</div>
+          <div class="tl-i">Restoran/otel/kafe ön araştırması — hedef liste</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> Lansman PR paketi, İçerik stratejisi brief'i, Restoran/otel/kafe hedef listesi</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Haziran</div>
+        <div class="tl-label">Hafta 9-12</div>
+        <div class="tl-nature">☀️ olgunlaşma başlangıcı</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Derinleşme & Geçiş Hazırlığı</div>
+        <div class="tl-items">
+          <div class="tl-i">Faz 1 performans raporu — medya değeri, erişim, algı analizi</div>
+          <div class="tl-i">Dalga 2 planlaması — restoran/otel/kafe stratejisi detaylandırma</div>
+          <div class="tl-i">Hasat Deneyimi etkinliği ön hazırlığı (modüler — ayrı bütçe)</div>
+          <div class="tl-i">Marka kılavuzu güncelleme — ilk 3 ayın öğrenimleriyle</div>
+          <div class="tl-i">Ayşe Hanım adına ilk yayınlanmış sektör makalesi</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> Faz 1 Kapanış Raporu, Dalga 2 Planı, Marka Kılavuzu v2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── DALGA 2 ─── -->
+  <h3 style="color:var(--amber)">Dalga 2 — Hasat</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Temmuz – Ağustos 2026 · Restoran/Otel/Kafe & Deneyim · Faz 2 başlangıcı</p>
+
+  <p>Hasat dönemi, Nebia'nın hikayesinin en güçlü görsel malzemeyi ürettiği andır. Bu dalga, gastronomi dünyasının ötesine — restoran, otel ve deneyim ekonomisine — açılmayı hedefler.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Temmuz</div>
+        <div class="tl-label">Hafta 13-16</div>
+        <div class="tl-nature">🍎 hasat dönemi</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Restoran/Otel/Kafe Aktivasyonu</div>
+        <div class="tl-items">
+          <div class="tl-i">Hedef restoran ve otellere kişiselleştirilmiş sunum paketleri</div>
+          <div class="tl-i">Şef işbirlikleri — Nebia ürünleriyle özel menü geliştirme</div>
+          <div class="tl-i">Hasat dönemi içerik serisi — bahçeden canlı görüntüler, proses hikayeleri</div>
+          <div class="tl-i">Basın turu daveti planlaması — Kadışehri'nde medya ağırlama</div>
+          <div class="tl-i">Civanperçemi sirkesi lansmanı (Mayıs'tan gelen momentum)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Ağustos</div>
+        <div class="tl-label">Hafta 17-20</div>
+        <div class="tl-nature">🫙 fıçılama dönemi</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Deneyim & İçerik Zenginleştirme</div>
+        <div class="tl-items">
+          <div class="tl-i"><strong>Hasat Deneyimi Etkinliği</strong> — bahçe-masa-fıçı konsepti (modüler bütçe)</div>
+          <div class="tl-i">Fıçılama süreci belgeleme — meşe fıçı hikayesi, zaman kavramı</div>
+          <div class="tl-i">Bayram sezonu hazırlığı — Elmanın 7 Hali lansmanı planlaması</div>
+          <div class="tl-i">Kurumsal hediye kanalı ön araştırması</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> Restoran/otel/kafe ilk anlaşmalar, Etkinlik raporu, Bayram kampanya planı</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── DALGA 3 ─── -->
+  <h3 style="color:var(--violet)">Dalga 3 — Olgunlaşma</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Eylül – Ekim 2026 · Kurumsal & Son Tüketici · Faz 2 devam</p>
+
+  <p>Üçüncü dalga, ilk iki dalganın oluşturduğu bilinirlik ve güven üzerine inşa eder. Artık Nebia'yı tanıyan gastronomi dünyası ve restoran/otel/kafe kanalının ötesine — kurumsal hediye pazarına ve bilinçli son tüketiciye — ulaşma zamanıdır.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Eylül</div>
+        <div class="tl-label">Hafta 21-24</div>
+        <div class="tl-nature">🍂 olgunlaşma</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Kurumsal & Bayram Lansmanı</div>
+        <div class="tl-items">
+          <div class="tl-i"><strong>Elmanın 7 Hali bayram paketi lansmanı</strong></div>
+          <div class="tl-i">Kurumsal hediye programı aktivasyonu — B2B iletişim paketi</div>
+          <div class="tl-i">İstanbul Tadım Gecesi planlaması (modüler bütçe)</div>
+          <div class="tl-i">Dijital performans değerlendirmesi — mevcut dijital ekiple ortak analiz</div>
+          <div class="tl-i">Mevsimsel kampanya önerileri — dijital ekibe stratejik brief</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-when">Ekim</div>
+        <div class="tl-label">Hafta 25-28</div>
+        <div class="tl-nature">🏛️ kurumsal dönem</div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-title">Büyüme & İlk Yıl Değerlendirmesi</div>
+        <div class="tl-items">
+          <div class="tl-i"><strong>İstanbul Tadım Gecesi</strong> — premium deneyim etkinliği (modüler bütçe)</div>
+          <div class="tl-i">6 aylık kapsamlı performans raporu</div>
+          <div class="tl-i">2027 strateji taslağı — öğrenimler, fırsatlar, yeni kanallar</div>
+          <div class="tl-i">Belgesel ön yapım değerlendirmesi (modüler bütçe)</div>
+          <div class="tl-i">Yeni ürün lansmanları için iletişim şablonları</div>
+        </div>
+        <div class="tl-note"><strong>Çıktı:</strong> 6 Aylık Strateji Raporu, 2027 Yol Haritası taslağı</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── DALGA ÖZETİ ─── -->
+  <h3>Üç Dalganın Bütünlüğü</h3>
+
+  <div class="grid-3">
+    <div class="card card-green">
+      <h4>🌸 Dalga 1</h4>
+      <p><strong>Anlat</strong><br>Gastronomi dünyası seni tanısın. Hikayeni duysun.</p>
+    </div>
+    <div class="card card-amber">
+      <h4>🍎 Dalga 2</h4>
+      <p><strong>Deneyimle</strong><br>Ürünü sofralarda yaşasınlar. Tadı hatırlasınlar.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>🏛️ Dalga 3</h4>
+      <p><strong>Sahiplen</strong><br>"Nebia" duyunca akıllarına kalite gelsin.</p>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h4>Doğanın Takvimi = Nebia'nın Takvimi</h4>
+    <p>Bu yol haritasının en önemli özelliği, yapay pazarlama dönemlerine değil — toprağın, ağacın ve meyvenin kendi ritmine dayanmasıdır. Çiçeklenme zamanı başlayan hikaye, hasat zamanı deneyime, olgunlaşma zamanı güvene dönüşür. Bu döngü her yıl tekrarlar — ve her tekrarda marka bir kat daha derinleşir.</p>
+    <p>Tıpkı meşe fıçıda olgunlaşan sirke gibi — <em>zaman, Nebia'nın en büyük müttefikidir.</em></p>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 6 — BİRLİKTE BAŞLANGIÇ                               -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="panel" id="panel-baslangic">
+  <span class="overline">Sonraki Adım</span>
+  <h2>Birlikte Başlangıç</h2>
+
+  <p>Bu bölümde, çalışmaya başlandığında ilk adımların ne olacağını ve sürecin nasıl ilerleyeceğini özetliyoruz.</p>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── NASIL BAŞLARIZ ─── -->
+  <h3>Nasıl Başlarız?</h3>
+  <p>İmza sonrası ilk 10 gün, ortaklığın temelini atan yoğun bir keşif dönemidir. Bu dönemde Nebia'yı — ürünlerini, ekibini, vizyonunu, korkularını — derinlemesine anlarız.</p>
+
+  <div class="funnel">
+    <div class="funnel-layer top">
+      <div class="funnel-icon">1</div>
+      <div class="funnel-content">
+        <h4>Mutabakat & İmza</h4>
+        <p>Teklifin onaylanması, çalışma koşullarının karşılıklı doğrulanması ve sözleşme imzası. İlk fatura kesimi. LÂL tarafında proje ekibi atanır ve iç kick-off yapılır.</p>
+      </div>
+    </div>
+    <div class="funnel-layer mid">
+      <div class="funnel-icon">2</div>
+      <div class="funnel-content">
+        <h4>Mindmapping Seansı</h4>
+        <p>Fahrettin Bey, Ayşe Hanım ve Ali Bey ile 3-4 saatlik yoğun bir beyin haritası çalışması. Markanın kökeni, değerleri, korkuları, rakipleri, hayalleri — hepsi masaya yatırılır. Bu seans, sonraki çalışmaların temelini oluşturur.</p>
+      </div>
+    </div>
+    <div class="funnel-layer bot">
+      <div class="funnel-icon">3</div>
+      <div class="funnel-content">
+        <h4>İlk Teslimatlar</h4>
+        <p>Mindmapping çıktıları → Marka mimarisi taslağı, mesaj haritası, medya listesi, dijital görünürlük brief'i. İlk 2 hafta içinde Nebia'nın stratejik altyapısının iskeleti çıkar. 3. haftada ilk medya temasları başlar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout violet">
+    <p><strong>Ön çalışma notu:</strong> LÂL, bu teklife hazırlanırken eldeki assetler ve briefler üzerinden 10 farklı analiz yöntemi kullanarak bir marka profili taslağı oluşturmuştur. Bu taslak öngörü niteliğindedir — keşif fazında Nebia ekibiyle birlikte doğrulanacak, düzeltilecek ve derinleştirilecektir. Ama en azından sıfırdan değil, bir başlangıç noktasından yola çıkılacaktır.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── İLK 30 GÜN ─── -->
+  <h3>İlk 30 Günde Ne Olur?</h3>
+  <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Seçilen pakete göre teslimatlar farklılaşır. Aşağıdaki liste A paketinin tam kapsamını, B paketinin ise uygulanabilir bölümlerini yansıtır.</p>
+
+  <div class="delivs">
+    <div class="deliv"><span class="deliv-n">1</span><span><strong>Marka Kılavuzu v1</strong> — görsel dil, ses tonu, hedef kitleye göre mesajlar, yapılmaması gerekenler</span></div>
+    <div class="deliv"><span class="deliv-n">2</span><span><strong>Bahçeye Kim Gelecek Protokolü</strong> — ziyaretçi yönetimi, gizlilik, marka koruma sistemi <em>(A paketi)</em></span></div>
+    <div class="deliv"><span class="deliv-n">3</span><span><strong>Medya Veritabanı</strong> — gastronomi editörleri, yaşam yazarları, influencer listesi</span></div>
+    <div class="deliv"><span class="deliv-n">4</span><span><strong>Dijital Görünürlük Brief'i</strong> — mevcut durum analizi, fırsat haritası, dijital ekip için stratejik yönlendirme</span></div>
+    <div class="deliv"><span class="deliv-n">5</span><span><strong>Dalga 1 Kampanya Planı</strong> — haftalık eylem takvimi, içerik planı, medya takvimi</span></div>
+    <div class="deliv"><span class="deliv-n">6</span><span><strong>Marka Tutarlılık Rehberi</strong> — tüm kanallarda uygulanacak görsel ve sözel standartlar, dijital ekiple paylaşılır</span></div>
+    <div class="deliv"><span class="deliv-n">7</span><span><strong>İlk Basın Bülteni</strong> — Nebia hikayesi, dağıtıma hazır</span></div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── KPI: 3 AY SONUNDA NE ELDE EDİLECEK ─── -->
+  <h3>3 Ay Sonunda Başarıyı Neye Göre Ölçeceğiz?</h3>
+  <p>Faz 1 boyunca ilerleme somut teslimatlarla ölçülür. 3 ayın sonunda Nebia'nın elinde şunlar olacaktır:</p>
+
+  <div class="model-box" style="margin:18px 0">
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Marka Kılavuzu</span>
+      <span>Kim ne söyleyecek, nasıl söyleyecek, neyi söylemeyecek — ekibin tamamı aynı dili konuşur. Tamamlanmış ve onaylanmış belge</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Bahçeye Kim Gelecek Protokolü</span>
+      <span>Ziyaretçi yönetimi, bilgi paylaşım kuralları, gizlilik sistemi — uygulamaya hazır</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Basın çıktıları</span>
+      <span>En az 3 basın bülteni yayınlanmış, yayın garantili dağıtımlar gerçekleşmiş (A: 30+ site, B: 20+ site), medya değeri raporlanmış</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Medya ağı</span>
+      <span>Gastronomi editörleri, food yazarları, yaşam editörleriyle aktif ilişki kurulmuş. İletişim veritabanı oluşturulmuş</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Newsletter</span>
+      <span>"Bahçeden Notlar" serisi başlamış — ilk 5 sayı tamamlanmış ve abonelere ulaşmış</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Dijital ekip senkronu</span>
+      <span>Mevcut dijital ekiple çalışma düzeni kurulmuş, aylık stratejik brief'ler iletilmiş, marka tutarlılığı denetlenmiş</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Dalga 2 planı</span>
+      <span>Restoran/otel/kafe kanalı stratejisi hazır, hedef liste oluşturulmuş, Faz 2 kapsam önerisi sunulmuş</span>
+    </div>
+    <div class="model-row">
+      <span class="model-label" style="color:var(--violet)">Aylık raporlar</span>
+      <span>3 adet aylık performans raporu teslim edilmiş — medya değeri, basın çıkış sayısı, sonraki ay önerileri</span>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <p><strong>Net söz:</strong> 3 ayın sonunda Nebia'nın iletişim altyapısı kurulmuş, marka sesi tanımlanmış, basında görünürlük başlamış ve ikinci faz için somut bir yol haritası hazır olacaktır. Bu çıktılar ölçülebilir, kontrol edilebilir ve raporlanabilir.</p>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── UFUK PROJELERİ ─── -->
+  <h3>Ufukta Neler Var?</h3>
+  <p>Aşağıdaki projeler bu teklifin doğrudan kapsamında değildir — ancak süreç ilerledikçe birlikte değerlendirilebilecek potansiyel çalışma alanlarıdır.</p>
+
+  <div class="grid-2">
+    <div class="card card-oak">
+      <h4>Kadışehri Hafıza Projesi</h4>
+      <p>Her parselin, her ailenin hikayesini anlatan dijital arşiv. Kadışehri'nin kolektif hafızasını koruma altına almak — ve Nebia'yı o hafızanın taşıyıcısı yapmak.</p>
+    </div>
+    <div class="card card-green">
+      <h4>Kadim Döngü Koleksiyonu</h4>
+      <p>Yıllık limitli üretim serisi. Her yıl tek bir meyvenin — çiçekten fıçıya — tam döngüsünü anlatan premium paket. Numara ve sertifika ile.</p>
+    </div>
+    <div class="card card-violet">
+      <h4>Bahçeden Sofraya Belgeseli</h4>
+      <p>Nebia'nın hikayesini sinematik dille anlatan kısa veya uzun format belgesel. Festival potansiyeli olan, marka inşası ötesinde kültürel bir çalışma.</p>
+    </div>
+    <div class="card card-rose">
+      <h4>Nebia Akademi</h4>
+      <p>Doğal sirke, fermentasyon ve Anadolu mutfak mirası üzerine eğitim platformu. Sektör otoritesinin kurumsal boyuta taşınması.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ─── SON SÖZ ─── -->
+  <div class="usp-banner">
+    <h3>Nebia, Anadolu'nun 5.000 dönüm bahçesinde yetişen meyveleri<br>meşe fıçılarda, doğanın kendi ritminde, müdahalesiz olgunlaştırarak<br>ürüne dönüştüren tek Anadolu zanaatçı gıda markasıdır.</h3>
+    <p style="margin-top:16px;font-size:14px;color:rgba(255,255,255,.95)">Bu hikayenin nasıl anlatılacağını birlikte çalışarak belirleriz.</p>
+  </div>
+
+  <div class="insight" style="margin-top:28px">
+    <h4>Sonraki Adım</h4>
+    <p>Bu teklifle ilgili sorularınız, düzenleme talepleriniz veya detaylandırmak istediğiniz bölümler varsa — bir telefon veya yüz yüze görüşme ile hepsini konuşabiliriz.</p>
+    <p style="margin-top:12px"><strong>Melis Eryiğit Samir</strong><br>
+    <span style="font-size:12px;color:var(--muted)">LÂL Project · Kurucu</span><br>
+    <span style="font-size:12px;color:var(--muted)">melis@melissamirpr.com</span></p>
+    <p style="margin-top:12px;font-size:12px;color:var(--muted);font-style:italic">Teklif geçerliliği: 30 Nisan 2026</p>
+  </div>
+
+</div>
+
+
+<footer>
+  <span class="f-brand">LÂL Project</span>
+  <span>Mart 2026 · Gizli Belge · LÂL-NEB-2026-04</span>
+</footer>
+
+</div><!-- .page -->
+
+<script>
+function S(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('t-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function subS(id){
+  document.querySelectorAll('.sub-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sub-'+id).classList.add('active');
+  document.querySelectorAll('.sub-tab').forEach((t,i)=>{if((id==='a'&&i===0)||(id==='b'&&i===1))t.classList.add('active')});
+}
+function toggle(btn){
+  const body=btn.nextElementSibling;
+  body.classList.toggle('open');
+  const arrow=btn.querySelector('.arrow');
+  arrow.style.transform=body.classList.contains('open')?'rotate(180deg)':'';
+}
+document.addEventListener('keydown',e=>{
+  const panels=['guide','lal','bulgular','mimari','yatirim','yol','baslangic'];
+  const current=panels.findIndex(p=>document.getElementById('panel-'+p).classList.contains('active'));
+  if(e.key==='ArrowRight'&&current<panels.length-1)S(panels[current+1]);
+  if(e.key==='ArrowLeft'&&current>0)S(panels[current-1]);
+});
+</script>
+</body>
+</html>
